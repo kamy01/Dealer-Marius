@@ -20,13 +20,13 @@ public class Login implements Serializable {
 
         switch (requestCode){
             case Utils.SUCCESS:
-                return "/home/marius/IdeaProjects/DealersMarius/UI/web/pages/success.html";
+                return "success";
             case Utils.UNAUTHORIZED:
-                return "/home/marius/IdeaProjects/DealersMarius/UI/web/pages/unauthorized.html";
+                return "unauthorized";
             case Utils.NOT_FOUND:
-                return "/home/marius/IdeaProjects/DealersMarius/UI/web/pages/not_found.html";
+                return "not_found";
             default:
-                return "/home/marius/IdeaProjects/DealersMarius/UI/web/pages/login.html";
+                return "login";
         }
     }
 
