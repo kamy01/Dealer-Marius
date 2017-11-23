@@ -28,27 +28,27 @@ public class DealerEntity {
         this.dealerName = dealerName;
     }
 
-    public void setDealerName(String dealerName) {
+    public void setDealerEntityName(String dealerName) {
         this.dealerName = dealerName;
     }
 
-    public void setDealerPassword(String dealerPassword) {
+    public void setDealerEntityPassword(String dealerPassword) {
         this.dealerPassword = dealerPassword;
     }
 
-    public void setId(int id) {
+    public void setEntityId(int id) {
         this.id = id;
     }
 
-    public String getDealerName() {
+    public String getDealerEntityName() {
         return dealerName;
     }
 
-    public String getDealerPassword() {
+    public String getDealerEntityPassword() {
         return dealerPassword;
     }
 
-    public int getId() {
+    public int getEntityId() {
         return id;
     }
 }

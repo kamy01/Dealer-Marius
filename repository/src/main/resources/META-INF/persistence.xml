@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
+
+    <persistence-unit name="DealerPersistenceUnit">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <class>DealerEntity</class>
+        <properties>
+
+
+            <!--<property name="openjpa.ConnectionURL" value="jdbc:mysql://localhost:3306/dealer"/>-->
+            <!--<property name="openjpa.ConnectionDriverName" value="com.mysql.jdbc.Driver"/>-->
+            <!--<property name="openjpa.ConnectionUserName" value="root"/>-->
+            <!--<property name="openjpa.ConnectionPassword" value="marius$%"/>-->
+            <!--<property name="openjpa.DynamicEnhancementAgent" value="true" />-->
+            <!--<property name="openjpa.RuntimeUnenhancedClasses" value="supported" />-->
+            <!--<property name="openjpa.Log" value="SQL=TRACE"/>-->
+            <!--<property name="openjpa.ConnectionFactoryProperties"-->
+                      <!--value="PreettyPrint=true, PrettyPrintLineLength=72,PrintParameters=true,-->
+                      <!--MaxActive=10, MaxIdle=5, MinIdle=2, MaxWait=60000"/>-->
+
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+            <property name="hibernate.connection.password" value="marius#$"/>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/dealer"/>
+            <property name="hibernate.connection.username" value="root"/>
+            <property name="hibernate.dialect" value ="org.hibernate.dialect.MySQLDialect"/>
+
+        </properties>
+    </persistence-unit>
+</persistence>

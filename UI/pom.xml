@@ -23,7 +23,7 @@
         <scope>provided</scope>
     </dependency>
     <dependency>
-        <groupId>Logic</groupId>
+        <groupId>ProcessDealerInput</groupId>
         <artifactId>business-logic</artifactId>
         <version>1.0-SNAPSHOT</version>
     </dependency>

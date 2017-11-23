@@ -16,7 +16,7 @@ public class Login implements Serializable {
     public Login(){}
 
     public String checkLogIn(){
-        requestCode = Logic.checkDealer(dealerName, dealerPassword);
+        requestCode = ProcessDealerInput.authorizationCode(dealerName, dealerPassword);
 
         switch (requestCode){
             case Utils.SUCCESS:

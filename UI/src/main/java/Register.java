@@ -24,7 +24,7 @@ public class Register implements Serializable {
     }
 
     public String createDealer(){
-        isCreated = Logic.createDealer(dealerName, dealerPassword);
+        isCreated = ProcessDealerInput.isCreated(dealerName, dealerPassword);
 
         if (isCreated)
             return "success";
