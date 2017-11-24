@@ -23,14 +23,8 @@ public class Register implements Serializable {
         this.dealerPassword = dealerPassword;
     }
 
-    public String createDealer(){
-        isCreated = ProcessDealerInput.isCreated(dealerName, dealerPassword);
-
-        if (isCreated)
-            return "success";
-
-        return "unathorized"; //todo show in register page- message - same dealerName
-
+    public void createDealer(){
+        isCreated = RegisterService.isCreated(dealerName, dealerPassword);
     }
 
     public String getDealerName(){
@@ -40,4 +34,6 @@ public class Register implements Serializable {
     public String getDealerPassword(){
         return dealerPassword;
     }
+
+    public boolean getIsCreated(){return isCreated;}
 }
