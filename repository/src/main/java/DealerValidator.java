@@ -1,21 +1,15 @@
 class DealerValidator {
 
-    DealerService dealerService;
-
-
+    private DealerService dealerService;
 
     DealerValidator(){
 
         dealerService = new DealerService();
     }
 
-    Dealer getDealerFromDealerEntity(DealerEntity dealerEntity){
+    private Dealer getDealerFromDealerEntity(DealerEntity dealerEntity){
         return new Dealer(dealerEntity.getDealerEntityName(), dealerEntity.getDealerEntityPassword(),
                 dealerEntity.getEntityId());
-    }
-
-    DealerEntity getDealerEntityFromDealer(Dealer dealer){
-        return new DealerEntity(dealer.getDealerName(), dealer.getDealerPassword(), dealer.getId());
     }
 
     Dealer findDealer(Dealer dealer){
