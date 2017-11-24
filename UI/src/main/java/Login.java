@@ -15,19 +15,9 @@ public class Login implements Serializable {
 
     public Login(){}
 
-    public String checkLogIn(){
-        requestCode = ProcessDealerInput.authorizationCode(dealerName, dealerPassword);
+    public void checkLogIn(){
+        requestCode = LoginService.authorizationCode(dealerName, dealerPassword);
 
-        switch (requestCode){
-            case Utils.SUCCESS:
-                return "success";
-            case Utils.UNAUTHORIZED:
-                return "unauthorized";
-            case Utils.NOT_FOUND:
-                return "not_found";
-            default:
-                return "login";
-        }
     }
 
     public void setDealerName(String dealerName) {
@@ -45,5 +35,7 @@ public class Login implements Serializable {
     public String getDealerPassword(){
         return dealerPassword;
     }
+
+    public int getRequestCode(){return requestCode;}
 
 }
