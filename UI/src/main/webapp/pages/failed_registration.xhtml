@@ -11,12 +11,13 @@
 
 <ui:composition>
     <ui:param name="pageTitle" value="RegisterPage"/>
+    <h1>Register Page</h1>
     <h:form>
 
         <h:inputText id="dealername" value="#{register.dealerName}"/><br/>
         <h:inputSecret id="dealerpassword" value ="#{register.dealerPassword}"/><br/>
         <h:commandButton action="#{register.createDealer}" value="Register"/><br/><br/>
-        <h:outputText styleClass="red" value="Dealer already exists"/>
+        <h:outputText styleClass="red" value="Dealer already exists|Invalid input"/>
 
     </h:form>
 </ui:composition>

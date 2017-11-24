@@ -9,10 +9,11 @@
     <h:outputLabel value="Hell register"/>
 </f:view>
 
+
 <ui:composition>
     <ui:param name="pageTitle" value="RegisterPage"/>
     <h:form>
-
+        <h1>Register Page</h1>
         <h:inputText id="dealername" value="#{register.dealerName}"/><br/>
         <h:inputSecret id="dealerpassword" value ="#{register.dealerPassword}"/><br/>
         <h:commandButton action="#{register.createDealer}" value="Register"/>
