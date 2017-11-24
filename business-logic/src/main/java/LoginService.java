@@ -1,22 +1,22 @@
 class LoginService {
 
-    static int authorizationCode(String dealerName, String dealerPassword){
+    static int getResponseCode(String dealerName, String dealerPassword){
 
         Dealer possibleDealer = new Dealer(dealerName, dealerPassword);
         Dealer returnedDealer = new DealerValidator().findDealer(possibleDealer);
 
         if (returnedDealer.getId() == -1){
-            return 404;
+            return Utils.NOT_FOUND;
         }
 
         else
         {
 
             if(!returnedDealer.getDealerPassword().equals(dealerPassword)){
-                return 401;
+                return Utils.UNAUTHORIZED;
             }
             else{
-                return 200;
+                return Utils.SUCCESS;
             }
         }
     }
