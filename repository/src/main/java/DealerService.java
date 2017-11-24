@@ -7,7 +7,6 @@ public class DealerService {
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("DealerPersistenceUnit");
     private EntityManager em = emf.createEntityManager();
     private EntityTransaction tx = em.getTransaction();
-
     public boolean createDealerEntity(String dealerName, String dealerPassword){
         boolean isCreated = false;
 
