@@ -1,3 +1,6 @@
+import javax.ejb.Stateless;
+
+@Stateless
 class RegisterService {
 
     static boolean isCreated(String dealerName, String dealerPassword){

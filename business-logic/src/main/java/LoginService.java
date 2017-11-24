@@ -1,3 +1,6 @@
+import javax.ejb.Stateless;
+
+@Stateless
 class LoginService {
 
     static int getResponseCode(String dealerName, String dealerPassword){
