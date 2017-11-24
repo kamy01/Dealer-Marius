@@ -16,7 +16,7 @@ public class Login implements Serializable {
     public Login(){}
 
     public void checkLogIn(){
-        requestCode = LoginService.authorizationCode(dealerName, dealerPassword);
+        requestCode = LoginService.getResponseCode(dealerName, dealerPassword);
 
     }
 
