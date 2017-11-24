@@ -1,10 +1,10 @@
-public class DealerValidator {
+class DealerValidator {
 
     DealerService dealerService;
 
 
 
-    public DealerValidator(){
+    DealerValidator(){
 
         dealerService = new DealerService();
     }
@@ -18,7 +18,7 @@ public class DealerValidator {
         return new DealerEntity(dealer.getDealerName(), dealer.getDealerPassword(), dealer.getId());
     }
 
-    public Dealer findDealer(Dealer dealer){
+    Dealer findDealer(Dealer dealer){
         DealerEntity foundDealer = dealerService.getDealerEntity(dealer.getDealerName());
         return getDealerFromDealerEntity(foundDealer);
 

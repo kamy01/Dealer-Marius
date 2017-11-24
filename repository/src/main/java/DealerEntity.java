@@ -1,15 +1,15 @@
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "DealerEntity")
 public class DealerEntity {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
+    @Column(name = "DEALER_NAME")
     private String dealerName;
+
+    @Column(name = "DEALER_PASSWORD")
     private String dealerPassword;
 
 
@@ -22,33 +22,33 @@ public class DealerEntity {
         this.dealerPassword = dealerPassword;
     }
 
-    public DealerEntity(String dealerName, String dealerPassword, int id) {
+    DealerEntity(String dealerName, String dealerPassword, int id) {
         this.id = id;
         this.dealerPassword = dealerPassword;
         this.dealerName = dealerName;
     }
 
-    public void setDealerEntityName(String dealerName) {
+    void setDealerEntityName(String dealerName) {
         this.dealerName = dealerName;
     }
 
-    public void setDealerEntityPassword(String dealerPassword) {
+    void setDealerEntityPassword(String dealerPassword) {
         this.dealerPassword = dealerPassword;
     }
 
-    public void setEntityId(int id) {
+    void setEntityId(int id) {
         this.id = id;
     }
 
-    public String getDealerEntityName() {
+    String getDealerEntityName() {
         return dealerName;
     }
 
-    public String getDealerEntityPassword() {
+    String getDealerEntityPassword() {
         return dealerPassword;
     }
 
-    public int getEntityId() {
+    int getEntityId() {
         return id;
     }
 }

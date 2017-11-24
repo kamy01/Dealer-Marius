@@ -1,8 +1,6 @@
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DealerService {
 
@@ -13,7 +11,7 @@ public class DealerService {
     public boolean createDealerEntity(String dealerName, String dealerPassword){
         boolean isCreated = false;
 
-        if(getDealerEntity(dealerName) == null) {
+        if(getDealerEntity(dealerName).getEntityId() == -1) {
 
             DealerEntity newDealer = new DealerEntity();
             newDealer.setDealerEntityName(dealerName);
@@ -43,7 +41,22 @@ public class DealerService {
 
 
     DealerEntity getDealerEntity(String dealerName){
-        return em.find(DealerEntity.class, dealerName);
+        DealerEntity dealerEntity = new DealerEntity();
+
+        try {
+            Query getDealerQuery = em.createQuery("Select d from DealerEntity d where d.dealerName LIKE :name")
+                    .setParameter("name", dealerName);
+
+            dealerEntity = (DealerEntity) getDealerQuery.getSingleResult();
+        }
+
+        catch (NoResultException e){
+            System.out.println("Dealer not found !");
+            dealerEntity.setEntityId(-1);
+        }
+
+        return dealerEntity;
+
     }
 
 //    public ArrayList<DealerEntity> getDealersEntities(){
