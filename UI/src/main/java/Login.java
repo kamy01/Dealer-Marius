@@ -1,3 +1,4 @@
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import java.io.Serializable;
@@ -7,6 +8,8 @@ import java.io.Serializable;
 
 public class Login implements Serializable {
 
+    @EJB
+    private LoginService loginService;
 
     private int requestCode;
 
@@ -16,7 +19,7 @@ public class Login implements Serializable {
     public Login(){}
 
     public void checkLogIn(){
-        requestCode = LoginService.getResponseCode(dealerName, dealerPassword);
+        requestCode = loginService.getResponseCode(dealerName, dealerPassword);
 
     }
 
