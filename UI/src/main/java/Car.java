@@ -1,9 +1,12 @@
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
 import java.util.Date;
 
 @ManagedBean
+@SessionScoped
 public class Car implements Serializable{
+
     private String name;
     private String mark;
     private String color;
