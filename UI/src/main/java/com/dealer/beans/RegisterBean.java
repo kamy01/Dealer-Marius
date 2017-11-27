@@ -1,3 +1,7 @@
+package com.dealer.beans;
+
+import com.dealer.services.interfaces.Register;
+
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -6,20 +10,16 @@ import java.io.Serializable;
 @ManagedBean
 @RequestScoped
 
-public class LoginBean implements Serializable {
-
-    @EJB
-    private LoginServiceImpl loginServiceImpl;
-
-    private int requestCode;
+public class RegisterBean implements Serializable {
 
     private String dealerName;
     private String dealerPassword;
+    private boolean isCreated;
 
-    public LoginBean(){}
+    @EJB
+    private Register register;
 
-    public void checkLogIn(){
-        requestCode = loginServiceImpl.getResponseCode(dealerName, dealerPassword);
+    public RegisterBean(){
 
     }
 
@@ -27,11 +27,15 @@ public class LoginBean implements Serializable {
         this.dealerName = dealerName;
     }
 
-    public void setDealerPassword(String dealerPassword){
+    public void setDealerPassword(String dealerPassword) {
         this.dealerPassword = dealerPassword;
     }
 
-    public String getDealerName() {
+    public void createDealer(){
+        isCreated = register.isCreated(dealerName, dealerPassword);
+    }
+
+    public String getDealerName(){
         return dealerName;
     }
 
@@ -39,6 +43,5 @@ public class LoginBean implements Serializable {
         return dealerPassword;
     }
 
-    public int getRequestCode(){return requestCode;}
-
+    public boolean getIsCreated(){return isCreated;}
 }

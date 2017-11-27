@@ -1,7 +1,10 @@
+package com.dealer.entities;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "DealerEntity")
+@NamedQuery(name="DealerEntity.findDealer", query = "Select d from DealerEntity d where d.dealerName LIKE :name")
 public class DealerEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,33 +25,33 @@ public class DealerEntity {
         this.dealerPassword = dealerPassword;
     }
 
-    DealerEntity(String dealerName, String dealerPassword, int id) {
+    public DealerEntity(String dealerName, String dealerPassword, int id) {
         this.id = id;
         this.dealerPassword = dealerPassword;
         this.dealerName = dealerName;
     }
 
-    void setDealerEntityName(String dealerName) {
+    public void setDealerEntityName(String dealerName) {
         this.dealerName = dealerName;
     }
 
-    void setDealerEntityPassword(String dealerPassword) {
+    public void setDealerEntityPassword(String dealerPassword) {
         this.dealerPassword = dealerPassword;
     }
 
-    void setEntityId(int id) {
+    public void setEntityId(int id) {
         this.id = id;
     }
 
-    String getDealerEntityName() {
+    public String getDealerEntityName() {
         return dealerName;
     }
 
-    String getDealerEntityPassword() {
+    public String getDealerEntityPassword() {
         return dealerPassword;
     }
 
-    int getEntityId() {
+    public int getEntityId() {
         return id;
     }
 }

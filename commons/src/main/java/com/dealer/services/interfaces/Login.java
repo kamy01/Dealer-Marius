@@ -1,3 +1,5 @@
+package com.dealer.services.interfaces;
+
 import javax.ejb.Remote;
 
 @Remote

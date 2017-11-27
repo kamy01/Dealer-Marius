@@ -1,3 +1,5 @@
+package com.dealer.utils;
+
 public class Utils {
 
     public static final int NOT_FOUND = 404;

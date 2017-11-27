@@ -1,3 +1,5 @@
+package com.dealer.dto;
+
 import java.io.Serializable;
 
 public class Dealer implements Serializable {

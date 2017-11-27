@@ -1,8 +1,11 @@
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+package com.dealer.dao.impl;
 
-public class DealerDao {
+import com.dealer.dao.interfaces.Dao;
+import com.dealer.entities.DealerEntity;
+
+import javax.persistence.*;
+
+public class DealerDao implements Dao{
 
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("DealerPersistenceUnit");
     private EntityManager em = emf.createEntityManager();
@@ -33,24 +36,23 @@ public class DealerDao {
             tx.begin();
             em.remove(dealerEntity);
             tx.commit();
-
         }
 
     }
 
 
-    DealerEntity getDealerEntity(String dealerName){
+    public DealerEntity getDealerEntity(String dealerName){
         DealerEntity dealerEntity = new DealerEntity();
 
         try {
-            Query getDealerQuery = em.createQuery("Select d from DealerEntity d where d.dealerName LIKE :name")
+            Query getDealerQuery = em.createNamedQuery("DealerEntity.findDealer")
                     .setParameter("name", dealerName);
 
             dealerEntity = (DealerEntity) getDealerQuery.getSingleResult();
         }
 
         catch (NoResultException e){
-            System.out.println("Dealer not found !");
+            System.out.println("com.dealer.dto.Dealer not found !");
             dealerEntity.setEntityId(-1);
         }
 
@@ -58,7 +60,7 @@ public class DealerDao {
 
     }
 
-//    public ArrayList<DealerEntity> getDealersEntities(){
-//        em.createQuery("SELECT d from DealerEntity d");
+//    public ArrayList<com.dealer.entities.DealerEntity> getDealersEntities(){
+//        em.createQuery("SELECT d from com.dealer.entities.DealerEntity d");
 //    }
 }

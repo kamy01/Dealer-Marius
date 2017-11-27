@@ -3,7 +3,7 @@
 
     <persistence-unit name="DealerPersistenceUnit">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
-        <class>DealerEntity</class>
+        <class>com.dealer.entities.DealerEntity</class>
         <properties>
 
 

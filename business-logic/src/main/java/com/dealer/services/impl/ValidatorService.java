@@ -1,24 +1,31 @@
-class DealerValidator {
+package com.dealer.services.impl;
+
+import com.dealer.dao.impl.DealerDao;
+import com.dealer.dao.interfaces.Validator;
+import com.dealer.dto.Dealer;
+import com.dealer.entities.DealerEntity;
+
+class ValidatorService implements Validator{
 
     private DealerDao dealerDao;
 
-    DealerValidator(){
+    ValidatorService(){
 
         dealerDao = new DealerDao();
     }
 
-    private Dealer getDealerFromDealerEntity(DealerEntity dealerEntity){
+    public Dealer getDealerFromDealerEntity(DealerEntity dealerEntity){
         return new Dealer(dealerEntity.getDealerEntityName(), dealerEntity.getDealerEntityPassword(),
                 dealerEntity.getEntityId());
     }
 
-    Dealer findDealer(Dealer dealer){
+    public Dealer findDealer(Dealer dealer){
         DealerEntity foundDealer = dealerDao.getDealerEntity(dealer.getDealerName());
         return getDealerFromDealerEntity(foundDealer);
 
     }
 
-    boolean createDealer(String dealerName, String dealerPassword){
+    public boolean createDealer(String dealerName, String dealerPassword){
         boolean isCreated;
 
         isCreated = dealerDao.createDealerEntity(dealerName, dealerPassword);
