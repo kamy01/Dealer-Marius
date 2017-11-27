@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">
+
 <ui:composition template="/templates/menu_template.xhtml">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Success</title>
-</head>
-<ui:define name="menu">
-<h1>Success, dealer is present</h1>
-<h:outputText value="Hello , #{loginBean.dealerName}"/>
+
+<ui:define name="content">
+    <h1>Success, dealer is present</h1>
+    <section>
+        <h:outputText value="Hello , #{loginBean.dealerName}"/>
+    </section>
 </ui:define>
 </ui:composition>
 </html>

@@ -8,10 +8,8 @@
 <f:view>
     <h:outputLabel value="Hello register"/>
 </f:view>
+<body>
 
-
-<ui:composition>
-    <ui:param name="pageTitle" value="RegisterPage"/>
     <h:form>
         <h1>Register Page</h1>
         <h:inputText id="dealername" value="#{registerBean.dealerName}"/><br/>
@@ -19,5 +17,5 @@
         <h:commandButton action="#{registerBean.createDealer}" value="Register"/>
 
     </h:form>
-</ui:composition>
+</body>
 </html>
