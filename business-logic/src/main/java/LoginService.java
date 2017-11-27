@@ -3,7 +3,7 @@ import javax.ejb.Stateless;
 @Stateless
 class LoginService {
 
-    static int getResponseCode(String dealerName, String dealerPassword){
+     int getResponseCode(String dealerName, String dealerPassword){
 
         Dealer possibleDealer = new Dealer(dealerName, dealerPassword);
         Dealer returnedDealer = new DealerValidator().findDealer(possibleDealer);
