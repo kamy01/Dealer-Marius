@@ -15,7 +15,7 @@ public class RegisterServiceImpl implements Register {
 
         if(!dealerName.isEmpty() && !dealerPassword.isEmpty()) {
 
-            ValidatorService validator = new ValidatorService();
+            ValidatorServiceImpl validator = new ValidatorServiceImpl();
             Dealer possibleDealer = new Dealer(dealerName, dealerPassword);
             Dealer returnedDealer = validator.findDealer(possibleDealer);
 
