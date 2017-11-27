@@ -8,14 +8,14 @@
       <from-view-id>/pages/register.xhtml</from-view-id>
 
       <navigation-case>
-          <from-action>#{register.createDealer}</from-action>
-          <if>#{register.isCreated == true}</if>
-          <to-view-id>/pages/success.html</to-view-id>
+          <from-action>#{registerBean.createDealer}</from-action>
+          <if>#{registerBean.isCreated == true}</if>
+          <to-view-id>/pages/success_register.xhtml</to-view-id>
       </navigation-case>
 
       <navigation-case>
-          <from-action>#{register.createDealer}</from-action>
-          <if>#{register.isCreated == false}</if>
+          <from-action>#{registerBean.createDealer}</from-action>
+          <if>#{registerBean.isCreated == false}</if>
           <to-view-id>/pages/failed_registration.xhtml</to-view-id>
       </navigation-case>
   </navigation-rule>
@@ -25,21 +25,21 @@
         <from-view-id>/pages/login.xhtml</from-view-id>
 
         <navigation-case>
-            <from-action>#{login.checkLogIn}</from-action>
-            <if>#{login.requestCode == 200}</if>
-            <to-view-id>/pages/success.html</to-view-id>
+            <from-action>#{loginBean.checkLogIn}</from-action>
+            <if>#{loginBean.requestCode == 200}</if>
+            <to-view-id>/pages/success_login.xhtml</to-view-id>
         </navigation-case>
 
         <navigation-case>
-            <from-action>#{login.checkLogIn}</from-action>
-            <if>#{login.requestCode == 404}</if>
-            <to-view-id>/pages/not_found.html</to-view-id>
+            <from-action>#{loginBean.checkLogIn}</from-action>
+            <if>#{loginBean.requestCode == 404}</if>
+            <to-view-id>/pages/not_found.xhtml</to-view-id>
         </navigation-case>
 
         <navigation-case>
-            <from-action>#{login.checkLogIn}</from-action>
-            <if>#{login.requestCode == 401}</if>
-            <to-view-id>/pages/unauthorized.html</to-view-id>
+            <from-action>#{loginBean.checkLogIn}</from-action>
+            <if>#{loginBean.requestCode == 401}</if>
+            <to-view-id>/pages/unauthorized.xhtml</to-view-id>
         </navigation-case>
 
     </navigation-rule>

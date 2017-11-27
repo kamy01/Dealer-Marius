@@ -1,9 +1,9 @@
 import javax.ejb.Stateless;
 
 @Stateless
-class LoginService {
+class LoginServiceImpl implements Login{
 
-     int getResponseCode(String dealerName, String dealerPassword){
+     public int getResponseCode(String dealerName, String dealerPassword){
 
         Dealer possibleDealer = new Dealer(dealerName, dealerPassword);
         Dealer returnedDealer = new DealerValidator().findDealer(possibleDealer);

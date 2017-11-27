@@ -2,7 +2,7 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DealerService {
+public class DealerDao {
 
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("DealerPersistenceUnit");
     private EntityManager em = emf.createEntityManager();

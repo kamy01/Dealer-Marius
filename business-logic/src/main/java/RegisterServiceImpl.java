@@ -1,9 +1,9 @@
 import javax.ejb.Stateless;
 
 @Stateless
-class RegisterService {
+class RegisterServiceImpl implements Register{
 
-    static boolean isCreated(String dealerName, String dealerPassword){
+    public boolean isCreated(String dealerName, String dealerPassword){
         boolean isCreated = false;
 
         if(!dealerName.isEmpty() && !dealerPassword.isEmpty()) {

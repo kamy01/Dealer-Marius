@@ -6,20 +6,20 @@ import java.io.Serializable;
 @ManagedBean
 @RequestScoped
 
-public class Login implements Serializable {
+public class LoginBean implements Serializable {
 
     @EJB
-    private LoginService loginService;
+    private LoginServiceImpl loginServiceImpl;
 
     private int requestCode;
 
     private String dealerName;
     private String dealerPassword;
 
-    public Login(){}
+    public LoginBean(){}
 
     public void checkLogIn(){
-        requestCode = loginService.getResponseCode(dealerName, dealerPassword);
+        requestCode = loginServiceImpl.getResponseCode(dealerName, dealerPassword);
 
     }
 

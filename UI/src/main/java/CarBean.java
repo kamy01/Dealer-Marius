@@ -5,7 +5,7 @@ import java.util.Date;
 
 @ManagedBean
 @SessionScoped
-public class Car implements Serializable{
+public class CarBean implements Serializable{
 
     private String name;
     private String mark;

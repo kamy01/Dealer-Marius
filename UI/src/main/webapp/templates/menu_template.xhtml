@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<f:view contentType="text/html">
+    <h:head>
+        <meta charset="UTF-8"/>
+    </h:head>
+<h:body>
+<ui:insert name="menu">
+    <p:menubar>
+        <p:submenu label="Cars">
+            <p:menuitem value="add_car.xhtml">Add Car</p:menuitem>
+            <p:menuitem value="view_cars.xhtml">View Cars</p:menuitem>
+        </p:submenu>
+        <p:submenu label="Help">
+            <p:menuitem value="help.xhtml">Help</p:menuitem>
+        </p:submenu>
+    </p:menubar>
+</ui:insert>
+</h:body>
+</f:view>
+</html>

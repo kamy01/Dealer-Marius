@@ -1,10 +1,10 @@
 class DealerValidator {
 
-    private DealerService dealerService;
+    private DealerDao dealerDao;
 
     DealerValidator(){
 
-        dealerService = new DealerService();
+        dealerDao = new DealerDao();
     }
 
     private Dealer getDealerFromDealerEntity(DealerEntity dealerEntity){
@@ -13,7 +13,7 @@ class DealerValidator {
     }
 
     Dealer findDealer(Dealer dealer){
-        DealerEntity foundDealer = dealerService.getDealerEntity(dealer.getDealerName());
+        DealerEntity foundDealer = dealerDao.getDealerEntity(dealer.getDealerName());
         return getDealerFromDealerEntity(foundDealer);
 
     }
@@ -21,7 +21,7 @@ class DealerValidator {
     boolean createDealer(String dealerName, String dealerPassword){
         boolean isCreated;
 
-        isCreated = dealerService.createDealerEntity(dealerName, dealerPassword);
+        isCreated = dealerDao.createDealerEntity(dealerName, dealerPassword);
         return isCreated;
     }
 }

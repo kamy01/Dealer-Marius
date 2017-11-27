@@ -5,13 +5,13 @@ import java.io.Serializable;
 @ManagedBean
 @RequestScoped
 
-public class Register implements Serializable {
+public class RegisterBean implements Serializable {
 
     private String dealerName;
     private String dealerPassword;
     private boolean isCreated;
 
-    public Register(){
+    public RegisterBean(){
 
     }
 
@@ -24,7 +24,7 @@ public class Register implements Serializable {
     }
 
     public void createDealer(){
-        isCreated = RegisterService.isCreated(dealerName, dealerPassword);
+        isCreated = RegisterServiceImpl.isCreated(dealerName, dealerPassword);
     }
 
     public String getDealerName(){

@@ -17,9 +17,9 @@
             <h1>Login</h1>
             <h:form>
 
-                <h:inputText id="dealername" value="#{login.dealerName}"/><br/>
-                <h:inputSecret id="dealerpassword" value ="#{login.dealerPassword}"/><br/>
-                <h:commandButton action="#{login.checkLogIn}" value="Login"/>
+                <h:inputText id="dealername" value="#{loginBean.dealerName}"/><br/>
+                <h:inputSecret id="dealerpassword" value ="#{loginBean.dealerPassword}"/><br/>
+                <h:commandButton action="#{loginBean.checkLogIn}" value="Login"/>
 
             </h:form>
 
