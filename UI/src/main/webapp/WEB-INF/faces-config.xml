@@ -45,7 +45,7 @@
     </navigation-rule>
 
     <navigation-rule>
-        <from-view-id>/pages/failed_registration.xhtml.xhtml</from-view-id>
+        <from-view-id>/pages/failed_registration.xhtml</from-view-id>
 
         <navigation-case>
             <from-action>#{registerBean.createDealer}</from-action>
