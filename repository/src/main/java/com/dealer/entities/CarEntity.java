@@ -32,7 +32,15 @@ public class CarEntity {
     private Date registrationDate;
 
     public CarEntity(){
-        this.id = -1;
+
+    }
+    public CarEntity(String name, String mark, String condition, String color, String price, Date date){
+        this.name = name;
+        this.mark = mark;
+        this.condition = condition;
+        this.color = color;
+        this.price = price;
+        this.registrationDate = date;
     }
 
     public int getId() {
