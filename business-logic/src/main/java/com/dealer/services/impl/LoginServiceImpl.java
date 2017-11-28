@@ -11,7 +11,7 @@ public class LoginServiceImpl implements Login {
      public int getResponseCode(String dealerName, String dealerPassword){
 
         Dealer possibleDealer = new Dealer(dealerName, dealerPassword);
-        Dealer returnedDealer = new ValidatorServiceImpl().findDealer(possibleDealer);
+        Dealer returnedDealer = new DealerValidatorServiceImpl().findDealer(possibleDealer);
 
         if (returnedDealer.getId() == -1){
             return Utils.NOT_FOUND;

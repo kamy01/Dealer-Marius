@@ -3,8 +3,6 @@ package com.dealer.services.impl;
 import com.dealer.dto.Dealer;
 import com.dealer.services.interfaces.Register;
 
-import javax.ejb.Remote;
-import javax.ejb.Stateful;
 import javax.ejb.Stateless;
 
 @Stateless
@@ -15,7 +13,7 @@ public class RegisterServiceImpl implements Register {
 
         if(!dealerName.isEmpty() && !dealerPassword.isEmpty()) {
 
-            ValidatorServiceImpl validator = new ValidatorServiceImpl();
+            DealerValidatorServiceImpl validator = new DealerValidatorServiceImpl();
             Dealer possibleDealer = new Dealer(dealerName, dealerPassword);
             Dealer returnedDealer = validator.findDealer(possibleDealer);
 
