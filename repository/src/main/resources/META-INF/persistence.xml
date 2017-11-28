@@ -4,6 +4,7 @@
     <persistence-unit name="DealerPersistenceUnit">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <class>com.dealer.entities.DealerEntity</class>
+        <class>com.dealer.entities.CarEntity</class>
         <properties>
 
 
