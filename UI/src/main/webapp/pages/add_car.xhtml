@@ -1,0 +1,58 @@
+<ui:composition template="/templates/menu_template.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <h:outputText value="#{loginBean.dealerName}, please add a Car. Complete the form below"/><br/><br/>
+    </h:head>
+
+<ui:define name="content">
+    <h:form>
+        <p:panel id="car_panel" header="New Car for #{loginBean.dealerName}" style="margin-bottom:10px">
+
+            <p:messages id="msgs"/>
+            <h:panelGrid columns="2" cellpadding="5">
+
+                <p:outputLabel for="name" value="Name:"/>
+                <p:inputText id="name" value="#{carBean.name}" required="true" label="Name">
+                    <f:validateLength minimum="5"/>
+                </p:inputText>
+
+                <p:outputLabel for="mark" value="Mark:"/>
+                <p:inputText id="mark" value="#{carBean.mark}" required="true" label="Mark">
+                    <f:validateLength minimum="5"/>
+                </p:inputText>
+
+                <p:outputLabel for="condition" value="Condition:"/>
+                <p:inputText id="condition" value="#{carBean.condition}" required="true" label="Condition">
+                    <f:validateLength minimum="5"/>
+                </p:inputText>
+
+                <p:outputLabel for="price" value="Price:"/>
+                <p:inputText id="price" value="#{carBean.price}" readonly="false" required="true">
+                    <f:ajax disabled="true"/>
+                    <f:validateRegex pattern="^\d{0,8}(\.\d{1,4})?$"/>
+                </p:inputText>
+
+                <p:outputLabel for="registrationDate" value="Registration Date:"/>
+                <p:inputMask id="registrationDate" mask="99/99/9999"
+                             value="#{carBean.registrationDate}" required="true" label="Registration">
+                    <f:validator validatorId="registrationDateValidator"/>
+                    <f:convertDateTime pattern="dd/MM/yyyy"/>
+                </p:inputMask>
+
+                <h:panelGrid columns="2" cellpadding="5">
+                    <p:outputLabel for="color" value="Color:"/>
+                    <p:selectOneMenu id="color" value="#{carBean.color}" required="true">
+                        <f:selectItem itemLabel="Select Color" itemValue="" noSelectionOption="true"/>
+                        <f:selectItems value="#{carBean.colors}"/>
+                    </p:selectOneMenu>
+                </h:panelGrid>
+
+            </h:panelGrid>
+            <p:separator/>
+            <h:commandButton value="Add" actionListener="#{carBean.addCar}"/>
+        </p:panel>
+
+    </h:form>
+</ui:define>
+</ui:composition>
