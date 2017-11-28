@@ -1,17 +1,27 @@
 package com.dealer.dto;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Car implements Serializable {
     private String name;
     private String mark;
     private String condition;
-    private String registrationDate;
+    private Date registrationDate;
     private String color;
     private String price;
 
     private int id;
     private int ownerId;
+
+    public Car(String name, String mark, String condition, String color, String price, Date registrationDate){
+        this.name = name;
+        this.mark = mark;
+        this.condition = condition;
+        this.color = color;
+        this.price = price;
+        this.registrationDate = registrationDate;
+    }
 
     public String getName() {
         return name;
@@ -37,11 +47,11 @@ public class Car implements Serializable {
         this.condition = condition;
     }
 
-    public String getRegistrationDate() {
+    public Date getRegistrationDate() {
         return registrationDate;
     }
 
-    public void setRegistrationDate(String registrationDate) {
+    public void setRegistrationDate(Date registrationDate) {
         this.registrationDate = registrationDate;
     }
 
