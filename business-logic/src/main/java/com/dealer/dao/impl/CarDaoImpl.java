@@ -44,7 +44,7 @@ public class CarDaoImpl implements CarDao {
         }
 
         catch (NoResultException e){
-            System.out.println("com.dealer.dto.Dealer not found !");
+            System.out.println("com.dealer.dto.Car not found !");
             carEntity.setId(-1);
         }
 
