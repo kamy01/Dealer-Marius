@@ -1,19 +1,19 @@
 package com.dealer.services.impl;
 
-import com.dealer.dao.impl.DealerDao;
-import com.dealer.dao.interfaces.Validator;
+import com.dealer.dao.impl.DealerDaoImpl;
+import com.dealer.dao.interfaces.DealerValidator;
 import com.dealer.dto.Car;
 import com.dealer.dto.Dealer;
 import com.dealer.entities.CarEntity;
 import com.dealer.entities.DealerEntity;
 
-class DealerValidatorServiceImpl implements Validator{
+class DealerValidatorServiceImpl implements DealerValidator {
 
-    private DealerDao dealerDao;
+    private DealerDaoImpl dealerDao;
 
     DealerValidatorServiceImpl(){
 
-        dealerDao = new DealerDao();
+        dealerDao = new DealerDaoImpl();
     }
 
     public Dealer getDealerFromDealerEntity(DealerEntity dealerEntity){
@@ -34,18 +34,4 @@ class DealerValidatorServiceImpl implements Validator{
         return isCreated;
     }
 
-    @Override
-    public Car getCarFromCarEntity(CarEntity carEntity) {
-        return null;
-    }
-
-    @Override
-    public Car findCar(Car car) {
-        return null;
-    }
-
-    @Override
-    public boolean createCar(String name, String mark, String color, String price, String condition, String date) {
-        return false;
-    }
 }
