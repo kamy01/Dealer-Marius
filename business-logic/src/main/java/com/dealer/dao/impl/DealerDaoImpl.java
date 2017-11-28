@@ -1,11 +1,11 @@
 package com.dealer.dao.impl;
 
-import com.dealer.dao.interfaces.Dao;
+import com.dealer.dao.interfaces.DealerDao;
 import com.dealer.entities.DealerEntity;
 
 import javax.persistence.*;
 
-public class DealerDao implements Dao{
+public class DealerDaoImpl implements DealerDao {
 
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("DealerPersistenceUnit");
     private EntityManager em = emf.createEntityManager();
@@ -60,7 +60,4 @@ public class DealerDao implements Dao{
 
     }
 
-//    public ArrayList<com.dealer.entities.DealerEntity> getDealersEntities(){
-//        em.createQuery("SELECT d from com.dealer.entities.DealerEntity d");
-//    }
 }
