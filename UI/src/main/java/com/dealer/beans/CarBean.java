@@ -1,28 +1,54 @@
 package com.dealer.beans;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class CarBean implements Serializable{
-
     private String name;
     private String mark;
     private String color;
     private String condition;
 
-    private long price;
+    private String price;
     private Date registrationDate;
 
+    private ArrayList<String> colors;
+
+    @PostConstruct
+    public void init(){
+
+        colors = new ArrayList<String>();
+        colors.add("White");
+        colors.add("Black");
+        colors.add("Blue");
+        colors.add("Red");
+        colors.add("Brown");
+        colors.add("Green");
+        colors.add("Pink");
+        colors.add("Yellow");
+        colors.add("Silver");
+        colors.add("Grey");
+    }
+
+    public ArrayList<String> getColors() {
+        return colors;
+    }
+
+    public void addCar(){
+
+    }
 
     public Date getRegistrationDate() {
         return registrationDate;
     }
 
-    public long getPrice() {
+    public String getPrice() {
         return price;
     }
 
@@ -46,7 +72,7 @@ public class CarBean implements Serializable{
         this.registrationDate = registrationDate;
     }
 
-    public void setPrice(long price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
