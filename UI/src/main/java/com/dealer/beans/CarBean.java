@@ -1,6 +1,9 @@
 package com.dealer.beans;
 
+import com.dealer.services.interfaces.AddCar;
+
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import java.io.Serializable;
@@ -19,6 +22,11 @@ public class CarBean implements Serializable{
     private Date registrationDate;
 
     private ArrayList<String> colors;
+
+    private boolean isAdded = false;
+
+    @EJB
+    private AddCar addCarService;
 
     @PostConstruct
     public void init(){
@@ -41,7 +49,7 @@ public class CarBean implements Serializable{
     }
 
     public void addCar(){
-
+        isAdded = addCarService.isCarAdded(name, mark, color, price, condition, registrationDate);
     }
 
     public Date getRegistrationDate() {
@@ -90,5 +98,9 @@ public class CarBean implements Serializable{
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isAdded() {
+        return isAdded;
     }
 }
