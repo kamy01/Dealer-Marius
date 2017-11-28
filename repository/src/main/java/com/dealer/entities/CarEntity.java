@@ -5,6 +5,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "CarEntity")
+@NamedQuery(name="CarEntity.findCar", query = "Select c from CarEntity c where c.id = :id")
 public class CarEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -17,6 +18,9 @@ public class CarEntity {
 
     @Column(name = "CAR_MARK")
     private String mark;
+
+    @Column(name = "CAR_PRICE")
+    private String price;
 
     @Column(name = "CAR_COLOR")
     private String color;
@@ -85,5 +89,13 @@ public class CarEntity {
 
     public void setRegistrationDate(Date registrationDate) {
         this.registrationDate = registrationDate;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 }
