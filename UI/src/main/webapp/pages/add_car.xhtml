@@ -5,8 +5,8 @@
     </h:head>
 
 <ui:define name="content">
+    <h:outputText value="#{loginBean.dealerName}, please add a Car. Complete the form below"/>
     <h:form>
-        <h:outputText value="#{loginBean.dealerName}, please add a Car. Complete the form below"/>
         <p:panel id="car_panel" header="New Car for #{loginBean.dealerName}" style="margin-bottom:10px">
 
             <p:messages id="add_message" redisplay="false"/>

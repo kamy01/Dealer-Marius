@@ -7,7 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.RequestScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import java.io.Serializable;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 @ManagedBean
-@ViewScoped
+@RequestScoped
 public class CarBean implements Serializable{
     private String name;
     private String mark;
@@ -127,7 +127,7 @@ public class CarBean implements Serializable{
         return addBtn;
     }
 
-    
+
     public void setAddBtn(UIComponent addBtn) {
         this.addBtn = addBtn;
     }
