@@ -2,7 +2,7 @@
                 xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui"
                 xmlns:f="http://java.sun.com/jsf/core">
     <ui:define name="content">
-            <p:messages id="msgs"/>
+            <p:messages id="login_message" redisplay="false"/>
             <h1>Login</h1>
             <h:form>
                 <h:panelGrid columns="2" cellpadding="5">
@@ -21,6 +21,6 @@
                 <h:commandButton action="#{loginBean.checkLogIn}" value="Login" binding="#{loginBean.loginBtn}"/>
 
             </h:form>
-
+        <h:outputLink value="register.xhtml">Register</h:outputLink>
     </ui:define>
 </ui:composition>
