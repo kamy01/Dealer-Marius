@@ -18,6 +18,9 @@ public class Utils {
     public static final String LOGIN_NOT_FOUND_MESSAGE = "Dealer not found !";
     public static final String LOGIN_UNAUTHORIZED_MESSAGE = "Wrong name or password";
 
+    public static final String ADD_CAR_SUCCESSFUL_MESSAGE = "Car added";
+    public static final String ADD_CAR_FAIL_MESSAGE = "Something went wrong, please try again";
+
 
 
 }
