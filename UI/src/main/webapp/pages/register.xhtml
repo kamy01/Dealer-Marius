@@ -18,7 +18,7 @@
         </p:password>
 
         </h:panelGrid>
-        <h:commandButton action="#{registerBean.createDealer}" value="Register" binding="#{registerBean.registerBtn}"/>
+        <h:commandButton actionListener="#{registerBean.createDealer}" value="Register" binding="#{registerBean.registerBtn}"/>
         <br/><br/>
         <h:outputLink value="login.xhtml">Login</h:outputLink>
 
