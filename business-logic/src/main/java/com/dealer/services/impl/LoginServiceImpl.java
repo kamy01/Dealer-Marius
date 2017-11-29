@@ -1,5 +1,6 @@
 package com.dealer.services.impl;
 
+import com.dealer.dao.impl.DealerDaoImpl;
 import com.dealer.dto.Dealer;
 import com.dealer.services.interfaces.Login;
 import com.dealer.utils.Utils;
@@ -11,7 +12,7 @@ public class LoginServiceImpl implements Login {
      public int getResponseCode(String dealerName, String dealerPassword){
 
         Dealer possibleDealer = new Dealer(dealerName, dealerPassword);
-        Dealer returnedDealer = new DealerValidatorServiceImpl().findDealer(possibleDealer);
+        Dealer returnedDealer = new DealerDaoImpl().findDealer(possibleDealer);
 
         if (returnedDealer.getId() == -1){
             return Utils.NOT_FOUND;

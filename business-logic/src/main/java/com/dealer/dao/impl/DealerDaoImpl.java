@@ -1,6 +1,8 @@
 package com.dealer.dao.impl;
 
+import com.dealer.com.dealer.utils.Conversions;
 import com.dealer.dao.interfaces.DealerDao;
+import com.dealer.dto.Dealer;
 import com.dealer.entities.DealerEntity;
 
 import javax.persistence.*;
@@ -58,6 +60,20 @@ public class DealerDaoImpl implements DealerDao {
 
         return dealerEntity;
 
+    }
+
+    @Override
+    public Dealer findDealer(Dealer dealer) {
+        DealerEntity foundDealer = this.getDealerEntity(dealer.getDealerName());
+        return Conversions.getDealerFromDealerEntity(foundDealer);
+    }
+
+    @Override
+    public boolean createDealer(String dealerName, String dealerPassword) {
+        boolean isCreated;
+
+        isCreated = this.createDealerEntity(dealerName, dealerPassword);
+        return isCreated;
     }
 
 }

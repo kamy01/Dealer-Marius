@@ -1,6 +1,8 @@
 package com.dealer.dao.impl;
 
+import com.dealer.com.dealer.utils.Conversions;
 import com.dealer.dao.interfaces.CarDao;
+import com.dealer.dto.Car;
 import com.dealer.entities.CarEntity;
 
 import javax.persistence.*;
@@ -49,5 +51,19 @@ public class CarDaoImpl implements CarDao {
         }
 
         return carEntity;
+    }
+
+    @Override
+    public Car findCar(Car car) {
+        CarEntity foundCar = this.getCarEntity(car.getId());
+        return Conversions.getCarFromCarEntity(foundCar);
+    }
+
+    @Override
+    public boolean createCar(String name, String mark, String color, String price, String condition, Date date) {
+        boolean isCreated;
+
+        isCreated = this.createCarEntity(name, mark, color, price, condition, date);
+        return isCreated;
     }
 }

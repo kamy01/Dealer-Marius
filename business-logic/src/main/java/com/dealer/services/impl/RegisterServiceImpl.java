@@ -1,5 +1,6 @@
 package com.dealer.services.impl;
 
+import com.dealer.dao.impl.DealerDaoImpl;
 import com.dealer.dto.Dealer;
 import com.dealer.services.interfaces.Register;
 
@@ -12,13 +13,12 @@ public class RegisterServiceImpl implements Register {
         boolean isCreated = false;
 
 
-            DealerValidatorServiceImpl validator = new DealerValidatorServiceImpl();
             Dealer possibleDealer = new Dealer(dealerName, dealerPassword);
-            Dealer returnedDealer = validator.findDealer(possibleDealer);
+            Dealer returnedDealer = new DealerDaoImpl().findDealer(possibleDealer);
 
 
             if (returnedDealer.getId() == -1) {
-                isCreated = validator.createDealer(dealerName, dealerPassword);
+                isCreated = new DealerDaoImpl().createDealer(dealerName, dealerPassword);
             }
 
         return isCreated;
