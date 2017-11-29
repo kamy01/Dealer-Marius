@@ -4,23 +4,6 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
     http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
 
-  <navigation-rule>
-      <from-view-id>/pages/register.xhtml</from-view-id>
-
-      <navigation-case>
-          <from-action>#{registerBean.createDealer}</from-action>
-          <if>#{registerBean.isCreated == true}</if>
-          <to-view-id>/pages/success_register.xhtml</to-view-id>
-      </navigation-case>
-
-      <navigation-case>
-          <from-action>#{registerBean.createDealer}</from-action>
-          <if>#{registerBean.isCreated == false}</if>
-          <to-view-id>/pages/failed_registration.xhtml</to-view-id>
-      </navigation-case>
-  </navigation-rule>
-
-
     <navigation-rule>
         <from-view-id>/pages/login.xhtml</from-view-id>
 
@@ -30,35 +13,6 @@
             <to-view-id>/pages/success_login.xhtml</to-view-id>
         </navigation-case>
 
-        <navigation-case>
-            <from-action>#{loginBean.checkLogIn}</from-action>
-            <if>#{loginBean.requestCode == 404}</if>
-            <to-view-id>/pages/not_found.xhtml</to-view-id>
-        </navigation-case>
-
-        <navigation-case>
-            <from-action>#{loginBean.checkLogIn}</from-action>
-            <if>#{loginBean.requestCode == 401}</if>
-            <to-view-id>/pages/unauthorized.xhtml</to-view-id>
-        </navigation-case>
-
     </navigation-rule>
-
-    <navigation-rule>
-        <from-view-id>/pages/failed_registration.xhtml</from-view-id>
-
-        <navigation-case>
-            <from-action>#{registerBean.createDealer}</from-action>
-            <if>#{registerBean.isCreated == true}</if>
-            <to-view-id>/pages/success_register.xhtml</to-view-id>
-        </navigation-case>
-
-        <navigation-case>
-            <from-action>#{registerBean.createDealer}</from-action>
-            <if>#{registerBean.isCreated == false}</if>
-            <to-view-id>/pages/failed_registration.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
-
 
 </faces-config>
