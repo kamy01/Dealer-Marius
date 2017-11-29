@@ -28,7 +28,8 @@
                 </p:inputText>
 
                 <p:outputLabel for="price" value="Price:"/>
-                <p:inputText id="price" value="#{carBean.price}" readonly="false" required="true">
+                <p:inputText id="price" value="#{carBean.price}" readonly="false" required="true" validatorMessage=
+                        "Please enter a valid price. E.g: 123.0, 24, 25.12">
                     <f:ajax disabled="true"/>
                     <f:validateRegex pattern="^\d{0,8}(\.\d{1,4})?$"/>
                 </p:inputText>
