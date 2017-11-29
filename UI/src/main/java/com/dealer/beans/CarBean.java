@@ -1,11 +1,15 @@
 package com.dealer.beans;
 
 import com.dealer.services.interfaces.AddCar;
+import com.dealer.utils.Utils;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,6 +28,7 @@ public class CarBean implements Serializable{
     private ArrayList<String> colors;
 
     private boolean isAdded = false;
+    private UIComponent addBtn;
 
     @EJB
     private AddCar addCarService;
@@ -49,7 +54,21 @@ public class CarBean implements Serializable{
     }
 
     public void addCar(){
+
         isAdded = addCarService.isCarAdded(name, mark, color, price, condition, registrationDate);
+        FacesMessage successAdd = new FacesMessage(FacesMessage.SEVERITY_INFO,Utils.ADD_CAR_SUCCESSFUL_MESSAGE,
+                Utils.ADD_CAR_SUCCESSFUL_MESSAGE);
+
+        FacesMessage failAdd = new FacesMessage(FacesMessage.SEVERITY_ERROR,Utils.ADD_CAR_FAIL_MESSAGE,
+                Utils.ADD_CAR_FAIL_MESSAGE);
+
+        FacesContext context = FacesContext.getCurrentInstance();
+        if(isAdded){
+            context.addMessage(addBtn.getClientId(context), successAdd);
+        }
+        else{
+            context.addMessage(addBtn.getClientId(context), failAdd);
+        }
     }
 
     public Date getRegistrationDate() {
@@ -102,5 +121,14 @@ public class CarBean implements Serializable{
 
     public boolean isAdded() {
         return isAdded;
+    }
+
+    public UIComponent getAddBtn() {
+        return addBtn;
+    }
+
+    
+    public void setAddBtn(UIComponent addBtn) {
+        this.addBtn = addBtn;
     }
 }
