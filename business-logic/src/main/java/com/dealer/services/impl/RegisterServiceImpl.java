@@ -11,7 +11,6 @@ public class RegisterServiceImpl implements Register {
     public boolean isCreated(String dealerName, String dealerPassword){
         boolean isCreated = false;
 
-        if(!dealerName.isEmpty() && !dealerPassword.isEmpty()) {
 
             DealerValidatorServiceImpl validator = new DealerValidatorServiceImpl();
             Dealer possibleDealer = new Dealer(dealerName, dealerPassword);
@@ -21,7 +20,6 @@ public class RegisterServiceImpl implements Register {
             if (returnedDealer.getId() == -1) {
                 isCreated = validator.createDealer(dealerName, dealerPassword);
             }
-        }
 
         return isCreated;
     }
