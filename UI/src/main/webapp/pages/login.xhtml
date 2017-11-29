@@ -1,22 +1,26 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-
-<head>
-</head>
-<body>
-
+<ui:composition template="/templates/template.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <ui:define name="content">
+            <p:messages id="msgs"/>
             <h1>Login</h1>
             <h:form>
+                <h:panelGrid columns="2" cellpadding="5">
 
-                <h:inputText id="dealername" value="#{loginBean.dealerName}"/><br/>
-                <h:inputSecret id="dealerpassword" value ="#{loginBean.dealerPassword}"/><br/>
-                <h:commandButton action="#{loginBean.checkLogIn}" value="Login"/>
+                    <p:outputLabel for="dealername" value="Dealer Name:"/>
+                <p:inputText id="dealername" value="#{loginBean.dealerName}">
+                    <f:validateLength minimum="2"/>
+                </p:inputText>
+
+                    <p:outputLabel for="dealerpassword" value="Dealer Password:"/>
+                <p:password id="dealerpassword" value ="#{loginBean.dealerPassword}">
+                    <f:validateLength minimum="2"/>
+                </p:password>
+
+                </h:panelGrid>
+                <h:commandButton action="#{loginBean.checkLogIn}" value="Login" binding="#{loginBean.loginBtn}"/>
 
             </h:form>
 
-</body>
-</html>
+    </ui:define>
+</ui:composition>
