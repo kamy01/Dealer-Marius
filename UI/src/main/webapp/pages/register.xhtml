@@ -1,21 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:outputLabel value="Hello register"/>
-</f:view>
-<body>
-
+<ui:composition template="/templates/template.xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+<ui:define name="content">
     <h:form>
         <h1>Register Page</h1>
-        <h:inputText id="dealername" value="#{registerBean.dealerName}"/><br/>
-        <h:inputSecret id="dealerpassword" value ="#{registerBean.dealerPassword}"/><br/>
-        <h:commandButton action="#{registerBean.createDealer}" value="Register"/>
+        <p:messages id="msgs">
+        </p:messages>
+        <p:inputText id="dealername" value="#{registerBean.dealerName}">
+            <f:validateLength minimum="2"/>
+        </p:inputText><br/>
+        <p:password id="dealerpassword" value ="#{registerBean.dealerPassword}">
+            <f:validateLength minimum="2"/>
+        </p:password><br/>
+        <h:commandButton action="#{registerBean.createDealer}" value="Register" binding="#{registerBean.registerBtn}"/>
+        <br/><br/>
+        <h:outputLink value="login.xhtml">Login</h:outputLink>
 
     </h:form>
-</body>
-</html>
+</ui:define>
+</ui:composition>
