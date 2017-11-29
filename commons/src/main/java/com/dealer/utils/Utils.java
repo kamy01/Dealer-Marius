@@ -11,5 +11,8 @@ public class Utils {
     public static final String REGISTRATION_DATE_AFTER_CURRENT_ERROR =
             "Registration Date cannot be after current date !";
     public static final String INVALID_DATE_FORMAT_ERROR = "Invalid Date Format !";
+    public static final String REGISTER_SUCCESS_MESSAGE = "Register Success";
+    public static final String REGISTER_USER_EXISTS_MESSAGE = "User exists!";
+    public static final String REGISTER_VALIDATOR_NAME = "Register";
 
 }
