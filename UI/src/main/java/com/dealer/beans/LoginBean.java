@@ -24,6 +24,7 @@ public class LoginBean implements Serializable {
     private String dealerName;
     private String dealerPassword;
     private UIComponent loginBtn;
+    private boolean isLogged = false;
 
     public LoginBean(){}
 
@@ -38,11 +39,18 @@ public class LoginBean implements Serializable {
 
         FacesContext context = FacesContext.getCurrentInstance();
         switch (requestCode){
+
             case Utils.NOT_FOUND:
                 context.addMessage(loginBtn.getClientId(context), notFoundMsg);
                 break;
+
             case Utils.UNAUTHORIZED:
                 context.addMessage(loginBtn.getClientId(context), unauthorizedMsg);
+                break;
+
+            case Utils.SUCCESS:
+                isLogged = true;
+                context.getExternalContext().getSessionMap().put("dealer", dealerName);
                 break;
         }
 
@@ -72,5 +80,13 @@ public class LoginBean implements Serializable {
 
     public void setLoginBtn(UIComponent loginBtn) {
         this.loginBtn = loginBtn;
+    }
+
+    public boolean isLogged() {
+        return isLogged;
+    }
+
+    public void setLogged(boolean logged) {
+        isLogged = logged;
     }
 }

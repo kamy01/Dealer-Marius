@@ -10,7 +10,7 @@
         <navigation-case>
             <from-action>#{loginBean.checkLogIn}</from-action>
             <if>#{loginBean.requestCode == 200}</if>
-            <to-view-id>/pages/success_login.xhtml</to-view-id>
+            <to-view-id>/secured/success_login.xhtml</to-view-id>
         </navigation-case>
 
     </navigation-rule>
