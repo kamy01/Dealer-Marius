@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
 
-    <persistence-unit name="DealerPersistenceUnit">
+    <persistence-unit name="DealerPersistenceUnit" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <non-jta-data-source>java:/DealerDS</non-jta-data-source>
         <class>com.dealer.entities.DealerEntity</class>
         <class>com.dealer.entities.CarEntity</class>
         <properties>
@@ -19,10 +20,7 @@
                       <!--value="PreettyPrint=true, PrettyPrintLineLength=72,PrintParameters=true,-->
                       <!--MaxActive=10, MaxIdle=5, MinIdle=2, MaxWait=60000"/>-->
 
-            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
-            <property name="hibernate.connection.password" value="marius#$"/>
-            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/dealer"/>
-            <property name="hibernate.connection.username" value="root"/>
+
             <property name="hibernate.dialect" value ="org.hibernate.dialect.MySQLDialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.show_sql" value="true"/>

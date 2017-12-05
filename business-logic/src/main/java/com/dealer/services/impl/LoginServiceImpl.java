@@ -5,7 +5,10 @@ import com.dealer.dto.Dealer;
 import com.dealer.services.interfaces.Login;
 import com.dealer.utils.Utils;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
 
+@TransactionManagement(value= TransactionManagementType.BEAN)
 @Stateless
 public class LoginServiceImpl implements Login {
 

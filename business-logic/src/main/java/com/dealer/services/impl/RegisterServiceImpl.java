@@ -5,7 +5,10 @@ import com.dealer.dto.Dealer;
 import com.dealer.services.interfaces.Register;
 
 import javax.ejb.Stateless;
+import javax.ejb.TransactionManagement;
+import javax.ejb.TransactionManagementType;
 
+@TransactionManagement(value= TransactionManagementType.BEAN)
 @Stateless
 public class RegisterServiceImpl implements Register {
 
