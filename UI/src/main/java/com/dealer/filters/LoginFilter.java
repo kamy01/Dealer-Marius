@@ -1,8 +1,6 @@
 package com.dealer.filters;
-
-import com.dealer.beans.LoginBean;
-
 import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -18,12 +16,13 @@ public class LoginFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
             throws IOException, ServletException {
 
-        HttpSession session = ((HttpServletRequest) servletRequest).getSession();
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
+        HttpSession session = request.getSession();
         String loginDealer = (String) session.getAttribute("dealer");
 
-        if(loginDealer == null){
-            String contextPath = ((HttpServletRequest)servletRequest).getContextPath();
-            ((HttpServletResponse)servletResponse).sendRedirect(contextPath + "/pages/login.xhtml");
+        if (loginDealer == null) {
+            String contextPath = ((HttpServletRequest) servletRequest).getContextPath();
+            ((HttpServletResponse) servletResponse).sendRedirect(contextPath + "/pages/login.xhtml");
         }
 
         filterChain.doFilter(servletRequest, servletResponse);

@@ -6,10 +6,10 @@
 
 <ui:define name="content">
     <h:outputText value="#{loginBean.dealerName}, please add a Car. Complete the form below"/>
-    <h:form>
-        <p:panel id="car_panel" header="New Car for #{loginBean.dealerName}" style="margin-bottom:10px">
+    <h:form rendered="true">
 
-            <p:messages id="add_message" redisplay="false"/>
+
+            <p:messages id="add_message" redisplay="false" autoUpdate="true"/>
             <h:panelGrid columns="2" cellpadding="5">
 
                 <p:outputLabel for="model" value="Model:"/>
@@ -51,9 +51,10 @@
 
             </h:panelGrid>
             <p:separator/>
-            <h:commandButton value="Add" actionListener="#{carBean.addCar}" binding="#{carBean.addBtn}"/>
-        </p:panel>
 
+
+        <p:commandButton value="Add" update="@form" process="@form" actionListener="#{carBean.addCar}" binding="#{carBean.addBtn}" rendered="true"/>
     </h:form>
 </ui:define>
+
 </ui:composition>

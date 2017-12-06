@@ -11,6 +11,7 @@
             <from-action>#{loginBean.checkLogIn}</from-action>
             <if>#{loginBean.requestCode == 200}</if>
             <to-view-id>/secured/success_login.xhtml</to-view-id>
+            <redirect/>
         </navigation-case>
 
     </navigation-rule>
