@@ -13,22 +13,22 @@
             <h:panelGrid columns="2" cellpadding="5">
 
                 <p:outputLabel for="model" value="Model:"/>
-                <p:inputText id="model" value="#{carBean.name}" required="true" label="Model">
+                <p:inputText id="model" value="#{addCarBean.name}" required="true" label="Model">
                     <f:validateLength minimum="2"/>
                 </p:inputText>
 
                 <p:outputLabel for="brand" value="Brand:"/>
-                <p:inputText id="brand" value="#{carBean.mark}" required="true" label="Brand">
+                <p:inputText id="brand" value="#{addCarBean.mark}" required="true" label="Brand">
                     <f:validateLength minimum="2"/>
                 </p:inputText>
 
                 <p:outputLabel for="condition" value="Condition:"/>
-                <p:inputText id="condition" value="#{carBean.condition}" required="true" label="Condition">
+                <p:inputText id="condition" value="#{addCarBean.condition}" required="true" label="Condition">
                     <f:validateLength minimum="2"/>
                 </p:inputText>
 
                 <p:outputLabel for="price" value="Price:"/>
-                <p:inputText id="price" value="#{carBean.price}" readonly="false" required="true" validatorMessage=
+                <p:inputText id="price" value="#{addCarBean.price}" readonly="false" required="true" validatorMessage=
                         "Please enter a valid price. E.g: 123.0, 24, 25.12">
                     <f:ajax disabled="true"/>
                     <f:validateRegex pattern="^\d{0,8}(\.\d{1,4})?$"/>
@@ -36,16 +36,16 @@
 
                 <p:outputLabel for="registrationDate" value="Registration Date:"/>
                 <p:inputMask id="registrationDate" mask="99/99/9999"
-                             value="#{carBean.registrationDate}" required="true" label="Registration">
+                             value="#{addCarBean.registrationDate}" required="true" label="Registration">
                     <f:validator validatorId="registrationDateValidator"/>
                     <f:convertDateTime pattern="dd/MM/yyyy"/>
                 </p:inputMask>
 
                 <h:panelGrid columns="2" cellpadding="5">
                     <p:outputLabel for="color" value="Color:"/>
-                    <p:selectOneMenu id="color" value="#{carBean.color}" required="true">
+                    <p:selectOneMenu id="color" value="#{addCarBean.color}" required="true">
                         <f:selectItem itemLabel="Select Color" itemValue="" noSelectionOption="true"/>
-                        <f:selectItems value="#{carBean.colors}"/>
+                        <f:selectItems value="#{addCarBean.colors}"/>
                     </p:selectOneMenu>
                 </h:panelGrid>
 
@@ -53,7 +53,7 @@
             <p:separator/>
 
 
-        <p:commandButton value="Add" update="@form" process="@form" actionListener="#{carBean.addCar}" binding="#{carBean.addBtn}" rendered="true"/>
+        <p:commandButton value="Add" update="@form" process="@form" actionListener="#{addCarBean.addCar}" binding="#{addCarBean.addBtn}" rendered="true"/>
     </h:form>
 </ui:define>
 
