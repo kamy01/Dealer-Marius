@@ -34,7 +34,7 @@ public class CarEntity {
     public CarEntity(){
 
     }
-    public CarEntity(String name, String mark, String condition, String color, String price, Date date){
+    public CarEntity(String name, String mark, String color, String price, String condition, Date date){
         this.name = name;
         this.mark = mark;
         this.condition = condition;

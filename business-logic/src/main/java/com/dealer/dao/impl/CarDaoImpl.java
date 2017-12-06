@@ -16,7 +16,7 @@ public class CarDaoImpl implements CarDao {
 
 
     @Override
-    public boolean createCarEntity(String name, String mark, String color, String price, String condition, Date date) {
+    public boolean createCarEntity(String name, String mark, String condition, String price, Date date, String color) {
 
 
         CarEntity newCar = new CarEntity(name, mark, color, price, condition, date);
@@ -60,10 +60,10 @@ public class CarDaoImpl implements CarDao {
     }
 
     @Override
-    public boolean createCar(String name, String mark, String color, String price, String condition, Date date) {
+    public boolean createCar(String name, String mark, String condition, String price, Date date, String color) {
         boolean isCreated;
 
-        isCreated = this.createCarEntity(name, mark, color, price, condition, date);
+        isCreated = this.createCarEntity(name, mark, condition, price, date, color);
         return isCreated;
     }
 }

@@ -10,7 +10,8 @@ import java.util.Date;
 @TransactionManagement(value= TransactionManagementType.BEAN)
 @Stateless
 public class AddCarServiceImpl implements AddCar {
-    public boolean isCarAdded(String name, String mark, String color, String price, String condition, Date date) {
-        return new CarDaoImpl().createCar(name, mark, color, price, condition, date);
+
+    public boolean isCarAdded(String name, String mark, String condition, String price, Date date, String color) {
+        return new CarDaoImpl().createCar(name, mark, condition, price, date, color);
     }
 }

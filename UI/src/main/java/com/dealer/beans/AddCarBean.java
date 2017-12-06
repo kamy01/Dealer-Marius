@@ -52,8 +52,8 @@ public class AddCarBean implements Serializable{
 
     public void addCar(){
 
-        isAdded = addCarService.isCarAdded(carBean.getName(), carBean.getMark(), carBean.getColor(), carBean.getPrice(),
-                carBean.getCondition(), carBean.getRegistrationDate());
+        isAdded = addCarService.isCarAdded(carBean.getName(), carBean.getMark(), carBean.getCondition(), carBean.getPrice(),
+                carBean.getRegistrationDate(), carBean.getColor());
 
         FacesMessage successAdd = new FacesMessage(FacesMessage.SEVERITY_INFO,Utils.ADD_CAR_SUCCESSFUL_MESSAGE,
                 Utils.ADD_CAR_SUCCESSFUL_MESSAGE);
