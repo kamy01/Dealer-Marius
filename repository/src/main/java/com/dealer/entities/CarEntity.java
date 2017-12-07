@@ -5,7 +5,11 @@ import java.util.Date;
 
 @Entity
 @Table(name = "CarEntity")
-@NamedQuery(name="CarEntity.findCar", query = "Select c from CarEntity c where c.id = :id")
+@NamedQueries({
+
+        @NamedQuery(name="CarEntity.findCar", query = "Select c from CarEntity c where c.id = :id"),
+        @NamedQuery(name="CarEntity.getAllCars", query = "Select c from CarEntity  c")})
+
 public class CarEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

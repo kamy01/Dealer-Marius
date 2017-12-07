@@ -6,7 +6,9 @@ import com.dealer.dto.Car;
 import com.dealer.entities.CarEntity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class CarDaoImpl implements CarDao {
 
@@ -39,10 +41,10 @@ public class CarDaoImpl implements CarDao {
         CarEntity carEntity = new CarEntity();
 
         try {
-            Query getDealerQuery = em.createNamedQuery("CarEntity.findCar")
+            Query getCarQuery = em.createNamedQuery("CarEntity.findCar")
                     .setParameter("id", id);
 
-            carEntity = (CarEntity) getDealerQuery.getSingleResult();
+            carEntity = (CarEntity) getCarQuery.getSingleResult();
         }
 
         catch (NoResultException e){
@@ -51,6 +53,26 @@ public class CarDaoImpl implements CarDao {
         }
 
         return carEntity;
+    }
+
+    @Override
+    public List<CarEntity> getAllCars() {
+        List<CarEntity> cars = new ArrayList<CarEntity>();
+
+        try{
+            Query getCarsQuery = em.createNamedQuery("CarEntity.getAllCars");
+             List listCars = getCarsQuery.getResultList();
+
+            for (Object car:
+                    listCars) {
+                cars.add((CarEntity) car);
+            }
+        }
+        catch (NoResultException e){
+            System.out.println("error querying all cars !");
+        }
+
+        return cars;
     }
 
     @Override
