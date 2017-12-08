@@ -4,39 +4,44 @@
 
     <ui:define name="content">
         <h:form>
-            <p:dataTable var = "car" value="#{searchCarBean.cars}">
-                <p:column headerText="Model">
-                    <h:outputText value="#{car.name}"/>
+            <p:dataTable var = "cars" widgetVar="carTable" value="#{searchCarBean.cars}" emptyMessage="No cars found !" paginator="true"
+                         rows="10">
+
+                <f:facet name="header">
+                    <p:outputPanel>
+                        <h:outputText value="Search Cars : "/>
+                        <p:inputText id="allFilter" onkeyup="PF('CarEntity').filter()"
+                                     style="width:150px" placeholder="Enter "/>
+                    </p:outputPanel>
+                </f:facet>
+
+
+                <p:column headerText="Model" filterBy="#{cars.name}">
+                    <h:outputText value="#{cars.name}"/>
                 </p:column>
 
-                <p:column headerText="Brand">
-                    <h:outputText value="#{car.mark}"/>
+                <p:column headerText="Brand" filterBy="#{cars.mark}">
+                    <h:outputText value="#{cars.mark}"/>
                 </p:column>
 
-                <p:column headerText="Color">
-                    <h:outputText value="#{car.color}"/>
+                <p:column headerText="Color" filterBy="#{cars.color}">
+                    <h:outputText value="#{cars.color}"/>
                 </p:column>
 
-                <p:column headerText="Price">
-                    <h:outputText value="#{car.price}"/>
+                <p:column headerText="Price" filterBy="#{cars.price}">
+                    <h:outputText value="#{cars.price}"/>
                 </p:column>
 
-                <p:column headerText="Condition">
-                    <h:outputText value="#{car.condition}"/>
+                <p:column headerText="Condition" filterBy="#{cars.condition}">
+                    <h:outputText value="#{cars.condition}"/>
                 </p:column>
 
-                <p:column headerText="Registration Date">
-                    <h:outputText value="#{car.registrationDate}"/>
+                <p:column headerText="Registration Date" filterBy="#{cars.registrationDate}">
+                    <h:outputText value="#{cars.registrationDate}"/>
                 </p:column>
 
             </p:dataTable>
-            <f:facet name="header">
-                <p:outputPanel>
-                    <h:outputText value="Search Cars :"/>
-                    <p:inputText id="allFilter" onkeyup="PF('CarEntity').filter()"
-                                 style="width:150px" placeholder="Enter "/>
-                </p:outputPanel>
-            </f:facet>
+
         </h:form>
     </ui:define>
 </ui:composition>

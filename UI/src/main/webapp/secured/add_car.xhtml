@@ -23,9 +23,11 @@
                 </p:inputText>
 
                 <p:outputLabel for="condition" value="Condition:"/>
-                <p:inputText id="condition" value="#{addCarBean.condition}" required="true" label="Condition">
-                    <f:validateLength minimum="2"/>
-                </p:inputText>
+                <p:selectOneMenu id="condition" value="#{addCarBean.condition}" required="true">
+                    <f:selectItem itemLabel="Select Condition" itemValue="" noSelectionOption="true"/>
+                    <f:selectItems value="#{addCarBean.conditions}"/>
+                </p:selectOneMenu>
+
 
                 <p:outputLabel for="price" value="Price:"/>
                 <p:inputText id="price" value="#{addCarBean.price}" readonly="false" required="true" validatorMessage=

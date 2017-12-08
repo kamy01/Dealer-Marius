@@ -13,7 +13,7 @@ public class Car implements Serializable {
 
     private int id;
 
-    public Car(String name, String mark, String condition, String color, String price, Date registrationDate){
+    public Car(String name, String mark, String color, String price, String condition, Date registrationDate){
         this.name = name;
         this.mark = mark;
         this.condition = condition;

@@ -1,5 +1,7 @@
 package com.dealer.utils;
 
+import java.util.ArrayList;
+
 public class Utils {
 
     public static final int NOT_FOUND = 404;
@@ -21,6 +23,131 @@ public class Utils {
     public static final String ADD_CAR_SUCCESSFUL_MESSAGE = "Car added";
     public static final String ADD_CAR_FAIL_MESSAGE = "Something went wrong, please try again";
 
+    public enum Conditions {
+        BAD{
+            @Override
+            public String toString(){
+                return "Bad";
+            }
+        },
 
+        GOOD{
+            @Override
+            public String toString() {
+                return "Good";
+            }
+        },
+
+        USED{
+            @Override
+            public String toString() {
+                return "Used";
+            }
+        },
+
+        NEW{
+            @Override
+            public String toString(){
+                return "New";
+            }
+        };
+
+        public static ArrayList<String> getConditions(){
+            ArrayList<String> conditions = new ArrayList<String>();
+
+            for(Conditions c: Conditions.values()){
+                conditions.add(c.toString());
+            }
+
+            return conditions;
+        }
+    }
+
+    public enum Colors {
+
+        WHITE{
+        @Override
+        public String toString(){
+            return "White";
+            }
+        },
+
+        BLACK{
+            @Override
+            public String toString(){
+                return "Black";
+            }
+        },
+
+        BLUE{
+            @Override
+            public String toString(){
+                return "Blue";
+            }
+        },
+
+        RED{
+            @Override
+            public String toString(){
+                return "Red";
+            }
+        },
+
+        BROWN{
+            @Override
+            public String toString(){
+                return "Brown";
+            }
+        },
+
+        GREEN{
+            @Override
+            public String toString(){
+                return "Green";
+            }
+        },
+
+
+        PINK{
+            @Override
+            public String toString(){
+                return "Pink";
+            }
+        },
+
+
+        YELLOW{
+            @Override
+            public String toString(){
+                return "Yellow";
+            }
+        },
+
+
+        SILVER{
+            @Override
+            public String toString(){
+                return "Silver";
+            }
+        },
+
+        GREY{
+            @Override
+            public String toString(){
+                return "Grey";
+            }
+        };
+
+        public static ArrayList<String> getColors(){
+
+            ArrayList<String> colors = new ArrayList<String>();
+
+            for(Colors c: Colors.values()) {
+                colors.add(c.toString());
+            }
+
+            return colors;
+        }
+    }
 
 }

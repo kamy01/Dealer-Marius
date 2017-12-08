@@ -19,7 +19,7 @@ import java.util.Date;
 @RequestScoped
 public class AddCarBean implements Serializable{
 
-    private ArrayList<String> colors;
+    private ArrayList<String> colors, conditions;
 
     private boolean isAdded = false;
     private UIComponent addBtn;
@@ -33,17 +33,8 @@ public class AddCarBean implements Serializable{
     @PostConstruct
     public void init(){
 
-        colors = new ArrayList<String>();
-        colors.add("White");
-        colors.add("Black");
-        colors.add("Blue");
-        colors.add("Red");
-        colors.add("Brown");
-        colors.add("Green");
-        colors.add("Pink");
-        colors.add("Yellow");
-        colors.add("Silver");
-        colors.add("Grey");
+        colors = Utils.Colors.getColors();
+        conditions = Utils.Conditions.getConditions();
     }
 
     public ArrayList<String> getColors() {
@@ -138,5 +129,13 @@ public class AddCarBean implements Serializable{
 
     public void setRegistrationDate(Date registrationDate) {
         this.carBean.setRegistrationDate(registrationDate);
+    }
+
+    public ArrayList<String> getConditions() {
+        return conditions;
+    }
+
+    public void setConditions(ArrayList<String> conditions) {
+        this.conditions = conditions;
     }
 }
