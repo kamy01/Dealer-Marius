@@ -8,6 +8,7 @@ import javax.persistence.*;
 public class DealerEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
     @Column(name = "DEALER_NAME")
     private String dealerName;

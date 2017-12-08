@@ -12,7 +12,6 @@ public class Car implements Serializable {
     private String price;
 
     private int id;
-    private int ownerId;
 
     public Car(String name, String mark, String condition, String color, String price, Date registrationDate){
         this.name = name;
@@ -77,13 +76,5 @@ public class Car implements Serializable {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getOwnerId() {
-        return ownerId;
-    }
-
-    public void setOwnerId(int ownerId) {
-        this.ownerId = ownerId;
     }
 }

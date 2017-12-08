@@ -12,10 +12,8 @@ import java.util.Date;
 
 public class CarEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "CAR_ID")
     private int id;
-
-    @Column(name = "CAR_OWNER_ID")
-    private int ownerId;
 
     @Column(name = "CAR_NAME")
     private String name;
@@ -53,14 +51,6 @@ public class CarEntity {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getOwnerId() {
-        return ownerId;
-    }
-
-    public void setOwnerId(int ownerId) {
-        this.ownerId = ownerId;
     }
 
     public String getName() {

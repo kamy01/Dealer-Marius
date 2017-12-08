@@ -7,6 +7,7 @@ import com.dealer.entities.CarEntity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class CarDaoImpl implements CarDao {
     }
 
     @Override
-    public void deleteCarEntity(int id, int ownerId) {
+    public void deleteCarEntity(int id) {
 
     }
 
@@ -57,22 +58,11 @@ public class CarDaoImpl implements CarDao {
 
     @Override
     public List<CarEntity> getAllCars() {
-        List<CarEntity> cars = new ArrayList<CarEntity>();
 
-        try{
-            Query getCarsQuery = em.createNamedQuery("CarEntity.getAllCars");
-             List listCars = getCarsQuery.getResultList();
+        Query getCarsQuery = em.createNamedQuery("CarEntity.getAllCars");
 
-            for (Object car:
-                    listCars) {
-                cars.add((CarEntity) car);
-            }
-        }
-        catch (NoResultException e){
-            System.out.println("error querying all cars !");
-        }
+        return getCarsQuery.getResultList();
 
-        return cars;
     }
 
     @Override
