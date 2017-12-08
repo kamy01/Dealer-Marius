@@ -6,8 +6,6 @@ import com.dealer.dto.Car;
 import com.dealer.entities.CarEntity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 

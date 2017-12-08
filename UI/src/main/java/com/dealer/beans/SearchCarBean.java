@@ -9,6 +9,9 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +23,7 @@ public class SearchCarBean {
     private CarBean carBean;
 
     private List<Car> cars;
+    private List<ColumnModel> columns;
     private ArrayList<String> colors, conditions;
 
     @EJB
@@ -30,6 +34,7 @@ public class SearchCarBean {
         cars = allCarsService.getCars();
         colors = Utils.Colors.getColors();
         conditions = Utils.Conditions.getConditions();
+        createColumns();
     }
 
     public CarBean getCarBean() {
@@ -64,5 +69,47 @@ public class SearchCarBean {
         this.conditions = conditions;
     }
 
+    public List<ColumnModel> getColumns(){
+        return columns;
+    }
 
+    public boolean filterByPrice(Object value, Object filter){
+        String filterText = (filter == null) ? null: filter.toString().trim();
+
+        if(filterText == null || filterText.equals("")){
+            return true;
+        }
+
+        if(value == null){
+            return false;
+        }
+
+        return ((Comparable) value).compareTo(Integer.valueOf(filterText)) > 0;
+    }
+
+    private void createColumns(){
+        String[] columnsKeys = {"name", "mark", "color", "price", "condition", "registrationDate"};
+        columns = new ArrayList<ColumnModel>();
+        for(String key:columnsKeys) {
+            columns.add(new ColumnModel(key.toUpperCase(), key));
+        }
+    }
+
+    static public class ColumnModel implements Serializable{
+        private String header;
+        private String attribute;
+
+        ColumnModel(String header, String attribute){
+            this.header = header;
+            this.attribute = attribute;
+        }
+
+        public String getHeader() {
+            return header;
+        }
+
+        public String getAttribute(){
+            return attribute;
+        }
+    }
 }
