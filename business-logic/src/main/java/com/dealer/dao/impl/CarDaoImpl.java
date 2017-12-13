@@ -58,9 +58,21 @@ public class CarDaoImpl implements CarDao {
     public List<CarEntity> getAllCars() {
 
         Query getCarsQuery = em.createNamedQuery("CarEntity.getAllCars");
-
         return getCarsQuery.getResultList();
 
+    }
+
+    @Override
+    public List<CarEntity> filterCars(String name, String mark, String condition, String price, Date date, String color) {
+        Query getFilteredCarsQuery = em.createNamedQuery("CarEntity.filterCars")
+                .setParameter("name", name)
+                .setParameter("mark", mark)
+                .setParameter("price", price)
+                .setParameter("condition", condition)
+                .setParameter("color", color)
+                .setParameter("registrationDate",date);
+
+        return getFilteredCarsQuery.getResultList();
     }
 
     @Override

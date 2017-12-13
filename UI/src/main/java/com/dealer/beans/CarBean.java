@@ -25,7 +25,7 @@ public class CarBean implements Serializable{
         this.name = name;
     }
 
-    String getMark() {
+    public String getMark() {
         return mark;
     }
 
@@ -33,7 +33,7 @@ public class CarBean implements Serializable{
         this.mark = mark;
     }
 
-    String getColor() {
+    public String getColor() {
         return color;
     }
 
@@ -41,7 +41,7 @@ public class CarBean implements Serializable{
         this.color = color;
     }
 
-    String getCondition() {
+    public String getCondition() {
         return condition;
     }
 
@@ -49,7 +49,7 @@ public class CarBean implements Serializable{
         this.condition = condition;
     }
 
-    String getPrice() {
+    public String getPrice() {
         return price;
     }
 
@@ -57,7 +57,7 @@ public class CarBean implements Serializable{
         this.price = price;
     }
 
-    Date getRegistrationDate() {
+    public Date getRegistrationDate() {
         return registrationDate;
     }
 

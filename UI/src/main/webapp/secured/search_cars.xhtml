@@ -5,53 +5,51 @@
     <ui:define name="content">
         <h:form id="cars">
 
-            <p:dataTable var = "cars" widgetVar="CarEntity" value="#{searchCarBean.cars}" emptyMessage="No cars found !"
-                         paginator="true" rows="10">
+            <p:dataTable id="carTable" var = "cars" widgetVar="carsTable" value="#{searchCarBean.cars}" emptyMessage="No cars found !"
+                         paginator="true" rows="10" binding="#{searchCarBean.dataTable}" tableStyle="width: 100%"
+                         lazy="true">
 
-                <p:columns var="column" value="#{searchCarBean.columns}"  columnIndexVar="colIndex"
-                           sortBy="#{cars[column.attribute]}" filterBy="#{cars[column.attribute]}">
+                <p:columns var="column" value="#{searchCarBean.columns}">
                     <f:facet name="header">
                         <h:outputText value="#{column.header}"/>
+                        <br/>
+
+                        <h:selectOneMenu label="Condition" rendered="#{column.header eq 'CONDITION'}"
+                                         value="#{searchCarBean.condition}">
+                            <f:ajax listener="#{searchCarBean.filter(searchCarBean.condition, column.header)}"/>
+                            <f:selectItems value="#{searchCarBean.conditions}"/>
+                        </h:selectOneMenu>
+
+                        <h:selectOneMenu label="Color" rendered="#{column.header eq 'COLOR'}"
+                                         value="#{searchCarBean.color}">
+                            <f:ajax listener="#{searchCarBean.filter(searchCarBean.color, column.header)}"/>
+                            <f:selectItems value="#{searchCarBean.colors}"/>
+                        </h:selectOneMenu>
+
+                        <h:inputText value="#{searchCarBean.mark}" rendered="#{column.header eq 'MARK'}">
+                            <f:ajax listener="#{searchCarBean.filter(searchCarBean.mark, column.header)}"/>
+                        </h:inputText>
+
+                        <h:inputText value="#{searchCarBean.name}" rendered="#{column.header eq 'NAME'}">
+                            <f:ajax listener="#{searchCarBean.filter(searchCarBean.name, column.header)}"/>
+                        </h:inputText>
+
+
+                        <h:inputText value="#{searchCarBean.price}"
+                                     rendered="#{column.header eq 'PRICE'}">
+                            <f:ajax listener="#{searchCarBean.filter(searchCarBean.price, column.header)}"/>
+                        </h:inputText>
+
+                        <p:inputMask value="#{searchCarBean.registrationDate}" mask="99/99/9999"
+                                     rendered="#{column.header eq 'REGISTRATIONDATE'}">
+                            <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            <f:ajax listener="#{searchCarBean.filter(searchCarBean.registrationDate, column.header)}"/>
+                        </p:inputMask>
+
                     </f:facet>
+
                     <h:outputText value="#{cars[column.attribute]}"/>
-
                 </p:columns>
-
-
-                <!--<p:column headerText="Model" filterBy="#{cars.name}" filterMatchMode="contains">-->
-                    <!--<h:outputText value="#{cars.name}"/>-->
-                <!--</p:column>-->
-
-                <!--<p:column headerText="Brand" filterBy="#{cars.mark}" filterMatchMode="exact">-->
-                    <!--<h:outputText value="#{cars.mark}"/>-->
-                <!--</p:column>-->
-
-                <!--<p:column headerText="Color" filterBy="#{cars.color}" filterMatchMode="in">-->
-                    <!--<f:facet name="filter">-->
-                    <!--<p:selectCheckboxMenu label ="Colors" onchange="PF('CarEntity').filter()">-->
-                        <!--<f:selectItems value="#{searchCarBean.colors}"/>-->
-                    <!--</p:selectCheckboxMenu>-->
-                    <!--</f:facet>-->
-                    <!--<h:outputText value="#{cars.color}"/>-->
-                <!--</p:column>-->
-
-                <!--<p:column headerText="Price" filterBy="#{cars.price}" filterMatchMode="contains"-->
-                          <!--filterFunction="#{searchCarBean.filterByPrice}">-->
-                    <!--<h:outputText value="#{cars.price}"/>-->
-                <!--</p:column>-->
-
-                <!--<p:column headerText="Condition" filterBy="#{cars.condition}" filterMatchMode="in">-->
-                    <!--<f:facet name="filter">-->
-                    <!--<p:selectCheckboxMenu label="Condition" onchange="PF('CarEntity').filter()">-->
-                        <!--<f:selectItems value="#{searchCarBean.conditions}"/>-->
-                    <!--</p:selectCheckboxMenu>-->
-                    <!--</f:facet>-->
-                    <!--<h:outputText value="#{cars.condition}"/>-->
-                <!--</p:column>-->
-
-                <!--<p:column headerText="Registration Date" filterBy="#{cars.registrationDate}" filterMatchMode="contains">-->
-                    <!--<h:outputText value="#{cars.registrationDate}"/>-->
-                <!--</p:column>-->
 
             </p:dataTable>
 

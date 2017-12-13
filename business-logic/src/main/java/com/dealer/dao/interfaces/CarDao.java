@@ -12,6 +12,7 @@ public interface CarDao {
     void deleteCarEntity(int id);
     CarEntity getCarEntity(int id);
     List<CarEntity> getAllCars();
+    List<CarEntity> filterCars(String name, String mark, String condition, String price, Date date, String color);
 
     Car findCar(Car car);
     boolean createCar(String name, String mark, String condition, String price, Date date, String color);

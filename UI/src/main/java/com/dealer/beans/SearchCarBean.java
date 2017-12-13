@@ -3,34 +3,37 @@ package com.dealer.beans;
 import com.dealer.dto.Car;
 import com.dealer.services.interfaces.SearchCars;
 import com.dealer.utils.Utils;
+import org.primefaces.component.datatable.DataTable;
+import org.primefaces.context.RequestContext;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
+import javax.faces.bean.ViewScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class SearchCarBean {
 
     @ManagedProperty(value = "#{carBean}")
     private CarBean carBean;
-
     private List<Car> cars;
     private List<ColumnModel> columns;
     private ArrayList<String> colors, conditions;
+    private final String[] columnsKeys = {"name", "mark", "color", "price", "condition", "registrationDate"};
+    private DataTable dataTable;
 
     @EJB
     private SearchCars allCarsService;
 
     @PostConstruct
     public void init(){
+        dataTable = new DataTable();
         cars = allCarsService.getCars();
         colors = Utils.Colors.getColors();
         conditions = Utils.Conditions.getConditions();
@@ -73,26 +76,105 @@ public class SearchCarBean {
         return columns;
     }
 
-    public boolean filterByPrice(Object value, Object filter){
-        String filterText = (filter == null) ? null: filter.toString().trim();
+    public void filter(String value, String columnName){
 
-        if(filterText == null || filterText.equals("")){
-            return true;
+        if(columnName.equals("PRICE")) {
+            if(value.length() == 0){
+                setPrice("%");
+            }
+        }
+        else if(columnName.equals("CONDITION")){
+            if(value.equals("All")){
+                setCondition("%");
+            }
+        }
+        else if(columnName.equals("MARK")){
+            if(value.length() == 0){
+                setMark("%");
+            }
+        }
+        else if(columnName.equals("NAME")){
+            if(value.length() == 0){
+                setName("%");
+            }
+        }
+        else if(columnName.equals("COLOR")){
+            if(value.equals("All")){
+                setColor("%");
+            }
         }
 
-        if(value == null){
-            return false;
+        else if(columnName.equals("REGISTRATIONDATE")){
+            if(value.length() == 0){
+                setRegistrationDate(Utils.getCurrentDate());
+            }
         }
 
-        return ((Comparable) value).compareTo(Integer.valueOf(filterText)) > 0;
+        cars = allCarsService.filterCars(getName(), getMark(), getCondition(), getPrice(), getRegistrationDate(), getColor());
+        RequestContext.getCurrentInstance().update("main:cars:carTable");
     }
 
     private void createColumns(){
-        String[] columnsKeys = {"name", "mark", "color", "price", "condition", "registrationDate"};
         columns = new ArrayList<ColumnModel>();
         for(String key:columnsKeys) {
             columns.add(new ColumnModel(key.toUpperCase(), key));
         }
+    }
+
+    public DataTable getDataTable() {
+        return dataTable;
+    }
+
+    public void setDataTable(DataTable dataTable) {
+        this.dataTable = dataTable;
+    }
+
+    public String getName() {
+        return carBean.getName() == null ? "%": carBean.getName();
+    }
+
+    public void setName(String name) {
+        this.carBean.setName(name);
+    }
+
+    public String getPrice() {
+        return carBean.getPrice() == null ? "%": carBean.getPrice();
+    }
+
+    public void setPrice(String price) {
+        this.carBean.setPrice(price);
+    }
+
+    public String getMark() {
+        return carBean.getMark() == null ? "%": carBean.getMark();
+    }
+
+    public void setMark(String mark) {
+        this.carBean.setMark(mark);
+    }
+
+    public Date getRegistrationDate() {
+        return carBean.getRegistrationDate() == null ? Utils.getCurrentDate(): carBean.getRegistrationDate();
+    }
+
+    public void setRegistrationDate(Date registrationDate) {
+        this.carBean.setRegistrationDate(registrationDate);
+    }
+
+    public String getColor() {
+        return carBean.getColor() == null || carBean.getColor().equals("All") ? "%": carBean.getColor();
+    }
+
+    public void setColor(String color) {
+        this.carBean.setColor(color);
+    }
+
+    public String getCondition() {
+        return carBean.getCondition() == null || carBean.getCondition().equals("All") ? "%": carBean.getCondition();
+    }
+
+    public void setCondition(String condition) {
+        this.carBean.setCondition(condition);
     }
 
     static public class ColumnModel implements Serializable{

@@ -8,7 +8,10 @@ import java.util.Date;
 @NamedQueries({
 
         @NamedQuery(name="CarEntity.findCar", query = "Select c from CarEntity c where c.id = :id"),
-        @NamedQuery(name="CarEntity.getAllCars", query = "Select c from CarEntity  c")})
+        @NamedQuery(name="CarEntity.getAllCars", query = "Select c from CarEntity  c"),
+        @NamedQuery(name="CarEntity.filterCars", query = "Select c from CarEntity  c where c.name LIKE :name and " +
+                "c.mark LIKE :mark and c.price LIKE :price and c.condition LIKE :condition and c.color LIKE :color and " +
+                "c.registrationDate <=:registrationDate")})
 
 public class CarEntity {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

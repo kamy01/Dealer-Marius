@@ -1,6 +1,10 @@
 package com.dealer.utils;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Utils {
 
@@ -24,6 +28,14 @@ public class Utils {
     public static final String ADD_CAR_FAIL_MESSAGE = "Something went wrong, please try again";
 
     public enum Conditions {
+        ALL{
+            @Override
+            public String toString() {
+                return "All";
+            }
+        },
+
+
         BAD{
             @Override
             public String toString(){
@@ -64,6 +76,13 @@ public class Utils {
     }
 
     public enum Colors {
+        ALL{
+            @Override
+            public String toString() {
+                return "All";
+            }
+        },
+
 
         WHITE{
         @Override
@@ -150,4 +169,17 @@ public class Utils {
         }
     }
 
+    public static Date getCurrentDate(){
+        DateFormat format = new SimpleDateFormat(DATE_PATTERN);
+        String currentDateString = format.format(new Date());
+
+        try {
+            return format.parse(currentDateString);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+            throw new RuntimeException();
+        }
+
+    }
 }
