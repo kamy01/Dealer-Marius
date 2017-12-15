@@ -1,6 +1,7 @@
 package com.dealer.filters;
+import com.dealer.dto.Dealer;
+
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -18,11 +19,22 @@ public class LoginFilter implements Filter {
 
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpSession session = request.getSession();
-        String loginDealer = (String) session.getAttribute("dealer");
+
+        String loginDealer = ((Dealer)session.getAttribute("dealer")).getDealerName();
+        String loginRole = ((Dealer)session.getAttribute("dealer")).getRole();
 
         if (loginDealer == null) {
             String contextPath = ((HttpServletRequest) servletRequest).getContextPath();
             ((HttpServletResponse) servletResponse).sendRedirect(contextPath + "/pages/login.xhtml");
+        }
+
+        if(!loginRole.equals("ADMIN")){
+
+            String criticalPath = ((HttpServletRequest) servletRequest).getServletPath();
+            String contextPath = ((HttpServletRequest) servletRequest).getContextPath();
+            if(criticalPath.endsWith("import.xhtml")){
+                ((HttpServletResponse) servletResponse).sendRedirect(contextPath + "/pages/login.xhtml");
+            }
         }
 
         filterChain.doFilter(servletRequest, servletResponse);

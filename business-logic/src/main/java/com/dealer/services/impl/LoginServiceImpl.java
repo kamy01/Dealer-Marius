@@ -7,29 +7,33 @@ import com.dealer.utils.Utils;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
+import java.util.HashMap;
+import java.util.Map;
 
 @TransactionManagement(value= TransactionManagementType.BEAN)
 @Stateless
 public class LoginServiceImpl implements Login {
 
-     public int getResponseCode(String dealerName, String dealerPassword){
-
+     public Map<Integer, Dealer> getResponse(String dealerName, String dealerPassword){
+        Map<Integer,Dealer> responseMap = new HashMap<Integer, Dealer>();
         Dealer possibleDealer = new Dealer(dealerName, dealerPassword);
         Dealer returnedDealer = new DealerDaoImpl().findDealer(possibleDealer);
 
         if (returnedDealer.getId() == -1){
-            return Utils.NOT_FOUND;
+            responseMap.put(Utils.NOT_FOUND, returnedDealer);
         }
 
         else
         {
 
             if(!returnedDealer.getDealerPassword().equals(dealerPassword)){
-                return Utils.UNAUTHORIZED;
+                responseMap.put(Utils.UNAUTHORIZED, returnedDealer);
             }
             else{
-                return Utils.SUCCESS;
+                responseMap.put(Utils.SUCCESS, returnedDealer);
             }
         }
+
+        return responseMap;
     }
 }

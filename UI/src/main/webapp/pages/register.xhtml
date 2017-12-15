@@ -13,6 +13,7 @@
         </p:inputText>
 
             <p:outputLabel for="dealerpassword" value="Dealer Password"/>
+
         <p:password id="dealerpassword" value ="#{registerBean.dealerPassword}">
             <f:validateLength minimum="2"/>
         </p:password>
@@ -20,7 +21,7 @@
         <p:selectOneMenu label="Role : " value="#{registerBean.dealerRole}"
                               multiple="false"
                               required="true">
-            <f:selectItem itemValue="Choose Role:" noSelectionOption="true"/>
+            <f:selectItem itemLabel="Choose Role:" noSelectionOption="true"/>
             <f:selectItems value="#{registerBean.roles}"/>
 
         </p:selectOneMenu>
