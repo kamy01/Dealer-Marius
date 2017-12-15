@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xs:simpleType name="condition" final="restriction">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="NEW"/>
+            <xs:enumeration value="USED"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+<xs:element name="Cars">
+    <xs:complexType>
+        <xs:sequence>
+
+            <xs:element name="Car" maxOccurs="unbounded">
+                <xs:complexType>
+
+                    <xs:sequence>
+                        <xs:element name="Brand" type="xs:string"/>
+                        <xs:element name="Model" type="xs:string"/>
+                        <xs:element name="Price" type="xs:decimal" minOccurs="0"/>
+                        <xs:element name="Color" type="xs:string"/>
+                        <xs:element name="Condition" type="condition" minOccurs="0"/>
+                    </xs:sequence>
+
+                    <xs:attribute name="vid" type="xs:decimal"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+</xs:schema>
