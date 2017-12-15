@@ -4,5 +4,5 @@ import javax.ejb.Remote;
 
 @Remote
 public interface Register {
-    boolean isCreated(String dealerName, String dealerPassword);
+    boolean isCreated(String dealerName, String dealerPassword, String role);
 }

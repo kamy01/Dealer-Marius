@@ -5,10 +5,17 @@ import java.io.Serializable;
 public class Dealer implements Serializable {
     private String dealerName;
     private String dealerPassword;
+    private String role;
     private int id;
 
     public Dealer(){
         this.id = -1;
+    }
+
+    public Dealer(String dealerName, String dealerPassword, String role){
+        this.dealerName = dealerName;
+        this.dealerPassword = dealerPassword;
+        this.role = role;
     }
 
     public Dealer(String dealerName, String dealerPassword){
@@ -16,10 +23,11 @@ public class Dealer implements Serializable {
         this.dealerPassword = dealerPassword;
     }
 
-    public Dealer(String dealerName, String dealerPassword, int id){
+    public Dealer(String dealerName, String dealerPassword, String role, int id){
         this.id = id;
         this.dealerPassword = dealerPassword;
         this.dealerName = dealerName;
+        this.role = role;
     }
 
     public void setDealerName(String dealerName) {
@@ -44,5 +52,13 @@ public class Dealer implements Serializable {
 
     public int getId() {
         return id;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

@@ -15,6 +15,8 @@ public class DealerEntity {
 
     @Column(name = "DEALER_PASSWORD")
     private String dealerPassword;
+    @Column(name="DEALER_ROLE")
+    private String role;
 
 
     public DealerEntity() {
@@ -54,5 +56,13 @@ public class DealerEntity {
 
     public int getEntityId() {
         return id;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

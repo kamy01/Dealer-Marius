@@ -12,16 +12,16 @@ import javax.ejb.TransactionManagementType;
 @Stateless
 public class RegisterServiceImpl implements Register {
 
-    public boolean isCreated(String dealerName, String dealerPassword){
+    public boolean isCreated(String dealerName, String dealerPassword, String role){
         boolean isCreated = false;
 
 
-            Dealer possibleDealer = new Dealer(dealerName, dealerPassword);
+            Dealer possibleDealer = new Dealer(dealerName, dealerPassword, role);
             Dealer returnedDealer = new DealerDaoImpl().findDealer(possibleDealer);
 
 
             if (returnedDealer.getId() == -1) {
-                isCreated = new DealerDaoImpl().createDealer(dealerName, dealerPassword);
+                isCreated = new DealerDaoImpl().createDealer(dealerName, dealerPassword, role);
             }
 
         return isCreated;

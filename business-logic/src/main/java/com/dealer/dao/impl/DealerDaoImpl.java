@@ -12,7 +12,7 @@ public class DealerDaoImpl implements DealerDao {
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("DealerPersistenceUnit");
     private EntityManager em = emf.createEntityManager();
     private EntityTransaction tx = em.getTransaction();
-    public boolean createDealerEntity(String dealerName, String dealerPassword){
+    public boolean createDealerEntity(String dealerName, String dealerPassword, String role){
         boolean isCreated = false;
 
         if(getDealerEntity(dealerName).getEntityId() == -1) {
@@ -20,6 +20,7 @@ public class DealerDaoImpl implements DealerDao {
             DealerEntity newDealer = new DealerEntity();
             newDealer.setDealerEntityName(dealerName);
             newDealer.setDealerEntityPassword(dealerPassword);
+            newDealer.setRole(role);
 
             tx.begin();
             em.persist(newDealer);
@@ -69,10 +70,10 @@ public class DealerDaoImpl implements DealerDao {
     }
 
     @Override
-    public boolean createDealer(String dealerName, String dealerPassword) {
+    public boolean createDealer(String dealerName, String dealerPassword, String role) {
         boolean isCreated;
 
-        isCreated = this.createDealerEntity(dealerName, dealerPassword);
+        isCreated = this.createDealerEntity(dealerName, dealerPassword, role);
         return isCreated;
     }
 

@@ -5,10 +5,10 @@ import com.dealer.entities.DealerEntity;
 
 
 public interface DealerDao {
-    boolean createDealerEntity(String dealerName, String dealerPassword);
+    boolean createDealerEntity(String dealerName, String dealerPassword, String role);
     void deleteDealerEntity(String dealerName);
     DealerEntity getDealerEntity(String dealerName);
 
     Dealer findDealer(Dealer dealer);
-    boolean createDealer(String dealerName, String dealerPassword);
+    boolean createDealer(String dealerName, String dealerPassword, String role);
 }

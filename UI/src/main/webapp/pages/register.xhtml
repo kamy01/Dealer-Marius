@@ -17,6 +17,14 @@
             <f:validateLength minimum="2"/>
         </p:password>
 
+        <p:selectOneMenu label="Role : " value="#{registerBean.dealerRole}"
+                              multiple="false"
+                              required="true">
+            <f:selectItem itemValue="Choose Role:" noSelectionOption="true"/>
+            <f:selectItems value="#{registerBean.roles}"/>
+
+        </p:selectOneMenu>
+
         </h:panelGrid>
         <h:commandButton actionListener="#{registerBean.createDealer}" value="Register" binding="#{registerBean.registerBtn}"/>
         <br/><br/>

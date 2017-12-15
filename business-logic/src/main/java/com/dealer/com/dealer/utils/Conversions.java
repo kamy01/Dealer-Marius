@@ -13,7 +13,7 @@ public class Conversions {
 
     public static Dealer getDealerFromDealerEntity(DealerEntity dealerEntity) {
         return new Dealer(dealerEntity.getDealerEntityName(), dealerEntity.getDealerEntityPassword(),
-                dealerEntity.getEntityId());
+                dealerEntity.getRole(), dealerEntity.getEntityId());
     }
 
     public static Car getCarFromCarEntity(CarEntity carEntity) {

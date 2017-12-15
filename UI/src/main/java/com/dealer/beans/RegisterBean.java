@@ -3,6 +3,7 @@ package com.dealer.beans;
 import com.dealer.services.interfaces.Register;
 import com.dealer.utils.Utils;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -10,6 +11,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 @ManagedBean
 @RequestScoped
@@ -18,8 +20,15 @@ public class RegisterBean implements Serializable {
 
     private String dealerName;
     private String dealerPassword;
+    private String dealerRole;
+    private ArrayList<String> roles;
     private boolean isCreated;
     private UIComponent registerBtn;
+
+    @PostConstruct
+    public void init(){
+        roles = Utils.Roles.getRoles();
+    }
 
     @EJB
     private Register register;
@@ -37,7 +46,7 @@ public class RegisterBean implements Serializable {
     }
 
     public void createDealer(){
-        isCreated = register.isCreated(dealerName, dealerPassword);
+        isCreated = register.isCreated(dealerName, dealerPassword, dealerRole);
 
         FacesMessage successMsg = new FacesMessage(FacesMessage.SEVERITY_INFO,Utils.REGISTER_SUCCESS_MESSAGE,
                 Utils.REGISTER_SUCCESS_MESSAGE);
@@ -70,5 +79,21 @@ public class RegisterBean implements Serializable {
 
     public void setRegisterBtn(UIComponent registerBtn) {
         this.registerBtn = registerBtn;
+    }
+
+    public String getDealerRole() {
+        return dealerRole;
+    }
+
+    public void setDealerRole(String dealerRole) {
+        this.dealerRole = dealerRole;
+    }
+
+    public ArrayList<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(ArrayList<String> roles) {
+        this.roles = roles;
     }
 }

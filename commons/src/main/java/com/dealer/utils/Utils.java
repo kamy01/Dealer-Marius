@@ -169,6 +169,32 @@ public class Utils {
         }
     }
 
+    public enum Roles{
+        USER{
+            @Override
+            public String toString() {
+                return "USER";
+            }
+        },
+        ADMIN{
+            @Override
+            public String toString() {
+                return "ADMIN";
+            }
+        };
+
+        public static ArrayList<String> getRoles(){
+
+            ArrayList<String> roles = new ArrayList<String>();
+
+            for(Roles r: Roles.values()) {
+                roles.add(r.toString());
+            }
+
+            return roles;
+        }
+    }
+
     public static Date getCurrentDate(){
         DateFormat format = new SimpleDateFormat(DATE_PATTERN);
         String currentDateString = format.format(new Date());
