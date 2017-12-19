@@ -16,10 +16,23 @@ public class Car implements Serializable {
     public Car(String name, String mark, String color, String price, String condition, Date registrationDate){
         this.name = name;
         this.mark = mark;
-        this.condition = condition;
-        this.color = color;
-        this.price = price;
         this.registrationDate = registrationDate;
+        this.color = color;
+
+        if(price != null) {
+            this.price = price;
+        }
+        else{
+            this.price = "0";
+        }
+
+        if(condition != null) {
+            this.condition = condition;
+        }
+        else{
+            this.condition = "unknown";
+        }
+
     }
 
     public String getName() {
