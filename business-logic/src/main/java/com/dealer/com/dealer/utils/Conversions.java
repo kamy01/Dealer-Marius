@@ -4,8 +4,11 @@ import com.dealer.dto.Car;
 import com.dealer.dto.Dealer;
 import com.dealer.entities.CarEntity;
 import com.dealer.entities.DealerEntity;
+import https.www_w3schools.Condition;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -36,4 +39,26 @@ public class Conversions {
         return cars;
     }
 
+    public static Car getDtoCarFromImportCar(https.www_w3schools.Car car){
+        BigDecimal price = car.getPrice();
+        Condition condition = car.getCondition();
+
+        if(price == null)
+        {
+            price = BigDecimal.valueOf(0);
+        }
+        else{
+            price = car.getPrice();
+        }
+
+        if(condition == null){
+            condition = Condition.fromValue("NEW");
+        }
+        else{
+            condition = car.getCondition();
+        }
+
+        return new Car(car.getModel(), car.getBrand(), car.getColor(), price.toString(),
+                condition.toString(), new Date());
+    }
 }
