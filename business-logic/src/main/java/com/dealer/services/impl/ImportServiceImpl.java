@@ -112,8 +112,8 @@ public class ImportServiceImpl implements Import{
         List<Car> cars = this.cars.getCar();
         for (Car car : cars) {
             com.dealer.dto.Car dtoCar = Conversions.getDtoCarFromImportCar(car);
-            boolean added = carDao.createCar(dtoCar.getName(), dtoCar.getMark(), dtoCar.getCondition(), dtoCar.getPrice(),
-                    dtoCar.getRegistrationDate(), dtoCar.getColor());
+            boolean added = carDao.createImportCarEntity(dtoCar.getId(),dtoCar.getName(), dtoCar.getMark(),
+                    dtoCar.getCondition(), dtoCar.getPrice(), dtoCar.getRegistrationDate(), dtoCar.getColor());
 
             if (!added){
                 return false;

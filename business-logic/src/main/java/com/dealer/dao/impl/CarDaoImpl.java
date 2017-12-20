@@ -30,6 +30,18 @@ public class CarDaoImpl implements CarDao {
 
     }
 
+    public boolean createImportCarEntity(int vid, String name, String mark, String condition, String price, Date date,
+                                         String color){
+
+        CarEntity newCar = new CarEntity(name, mark,color, price, condition, date, vid);
+
+        tx.begin();
+        em.persist(newCar);
+        tx.commit();
+
+        return true;
+    }
+
     @Override
     public void deleteCarEntity(int id) {
 

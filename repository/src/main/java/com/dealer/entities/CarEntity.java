@@ -1,5 +1,7 @@
 package com.dealer.entities;
 
+import com.dealer.dto.Car;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -36,6 +38,9 @@ public class CarEntity {
     @Column(name = "CAR_REGISTRATION_DATE")
     private Date registrationDate;
 
+    @Column(name= "CAR_VID")
+    private int vid;
+
     public CarEntity(){
 
     }
@@ -46,6 +51,16 @@ public class CarEntity {
         this.color = color;
         this.price = price;
         this.registrationDate = date;
+    }
+
+    public CarEntity(String name, String mark, String color, String price, String condition, Date date, int vid){
+        this.name = name;
+        this.mark = mark;
+        this.color = color;
+        this.price = price;
+        this.condition = condition;
+        this.registrationDate = date;
+        this.vid = vid;
     }
 
     public int getId() {
@@ -102,5 +117,13 @@ public class CarEntity {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public int getVid() {
+        return vid;
+    }
+
+    public void setVid(int vid) {
+        this.vid = vid;
     }
 }

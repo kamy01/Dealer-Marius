@@ -58,7 +58,11 @@ public class Conversions {
             condition = car.getCondition();
         }
 
-        return new Car(car.getModel(), car.getBrand(), car.getColor(), price.toString(),
+        Car dtoCar =  new Car(car.getModel(), car.getBrand(), car.getColor(), price.toString(),
                 condition.toString(), new Date());
+
+        dtoCar.setId(car.getVid().intValue());
+
+        return dtoCar;
     }
 }

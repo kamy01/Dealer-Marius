@@ -9,6 +9,8 @@ import java.util.List;
 public interface CarDao {
 
     boolean createCarEntity(String name, String mark, String condition, String price, Date date, String color);
+    boolean createImportCarEntity(int vid, String name, String mark, String condition, String price, Date date,
+                                  String color);
     void deleteCarEntity(int id);
     CarEntity getCarEntity(int id);
     List<CarEntity> getAllCars();

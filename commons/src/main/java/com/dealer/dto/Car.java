@@ -18,20 +18,8 @@ public class Car implements Serializable {
         this.mark = mark;
         this.registrationDate = registrationDate;
         this.color = color;
-
-        if(price != null) {
-            this.price = price;
-        }
-        else{
-            this.price = "0";
-        }
-
-        if(condition != null) {
-            this.condition = condition;
-        }
-        else{
-            this.condition = "unknown";
-        }
+        this.price = price;
+        this.condition = condition;
 
     }
 
